@@ -1,0 +1,57 @@
+.center() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inner(@width) {
+  width: @width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inner(@min-width, @max-width) {
+  min-width: @min-width;
+  max-width: @max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ul-reset() {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.link-reset() {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heading-underline(center) {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  right: 25%;
+  height: 1px;
+  background-color: #f57365;
+}
+
+.heading-underline(left) {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  right: 25%;
+  height: 1px;
+  background-color: #f57365;
+}
+
+// Is it right? I don't know...
+// &::after
+.clearfix() {
+  content: "";
+  display: table;
+  clear: both;
+}

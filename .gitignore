@@ -1,0 +1,5 @@
+node_modules
+build
+source/css
+source/js/script.js
+temp
