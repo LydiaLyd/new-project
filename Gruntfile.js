@@ -169,7 +169,7 @@ module.exports = function(grunt) {
           "source/less/*.less",
           "source/less/components/*.less"
         ],
-        tasks: ['less:styleDevelopment', 'cssmin:styleInSource',],
+        tasks: ['less:styleDevelopment', 'cssmin:styleDevelopment',],
         options: {
           spawn: false,
         }
@@ -200,7 +200,7 @@ module.exports = function(grunt) {
     "less:styleBuild",
     "autoprefixer",
     "combine_mq",
-    "cssmin:style",
+    "cssmin:styleBuild",
     "imagemin",
 //    "htmlmin",
 //    "replace",
@@ -210,7 +210,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask('development', [
     "less:styleDevelopment",
-    "cssmin:styleInSource",
+    "cssmin:styleDevelopment",
     "sprite",
 //    "concat:scriptDevelopment",
     "uglify:scriptDevelopment"
