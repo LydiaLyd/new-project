@@ -118,7 +118,7 @@ module.exports = function(grunt) {
       all: {
         src: 'source/img/sprites/*.png',
         dest: 'source/img/spritesheet.png',
-        destCss: 'source/less/sprites.less',
+        destCss: 'source/less/components/sprites.less',
         algorithm: 'top-down',
         padding: 10,
       }
@@ -179,6 +179,20 @@ module.exports = function(grunt) {
 
       
     },
+
+
+
+    // проверить script.js на наличие ошибок
+    jshint: {
+      // использовать jshint-stylish для наглядного представления ошибок
+      options: {
+        reporter: require('jshint-stylish')
+      },
+      scrypt: [
+        'Gruntfile.js',
+        'source/js/script.js',
+      ],
+    }
 
 
 
@@ -265,7 +279,7 @@ module.exports = function(grunt) {
     "uglify:build",  // ужать js-файлы
   ]);
   
-  grunt.registerTask('develop, [
+  grunt.registerTask('develop', [
     "sprite",  // создать spritesheet.png и sprites.less
     "less:develop",  // скомпилировать source/less/style.less в source/css/style.css
     "cssmin:develop",  // ужать style.css

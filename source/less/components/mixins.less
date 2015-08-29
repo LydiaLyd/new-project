@@ -48,7 +48,22 @@
   background-color: #f57365;
 }
 
-// Is it right? I don't know...
+// &::before
+.icon-top(@width, @height, @mb) {
+  content: "";
+  display: block;
+  width: @width;
+  height: @height;
+  .center;
+  margin-bottom: @mb;
+  background: transparent url(../img/spritesheet.png) no-repeat;
+}
+//&--modifier::before {
+//  background-position: x y;
+//}
+
+
+
 // &::after
 .clearfix() {
   content: "";
