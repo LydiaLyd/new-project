@@ -1,132 +1,70 @@
 module.exports = function(grunt) {
 
-  // загрузить задачи из package.json
+  // load tasks from package.json
   require("load-grunt-tasks")(grunt);
-
+  
+  // task configuration
   grunt.initConfig({
 
-
-
-    // скомпилировать style.less в style.css
+    // compile style.less into style.css
     less: {
-
-      develop: {
+      style: {
         files: {
-          "source/css/style.css": ["source/less/style.less"],
+          "build/css/style.css": "source/less/style.less"
         }
-      },
-
-      build: {
-        files: {
-          "build/css/style.css": ["source/less/style.less"],
-        }
-      },
-
+      }
     },
 
-
-
-    // добавить префиксы
+    // add prefixes
     autoprefixer: {
       options: {
         browsers: ["last 2 version", "ie 10"]
       },
-      build: {
+      style: {
         src: "build/css/style.css"
-      },
+      }
     },
 
-
-
-    // объединить медиавыражения ?
-    combine_mq: {
+    // compress style.css into style.min.css
+    cssmin: {
+      options: {
+        keepSpecialComments: 0,
+      },
       build: {
+        files: {
+          "build/css/style.min.css": "build/css/style.css"
+        }
+      }
+    },
+    
+    // "comb" style.css
+    csscomb: {
+      style: {
+        expand: true,
+        src: "build/css/style.css"
+      }
+    },
+    
+    // combine media queries
+    combine_mq: {
+      style: {
         src: "build/css/style.css",
         dest: "build/css/style.css"
       }
     },
 
-
-
-    // изменить пути ? непонятно, зачем вообще мне это нужно
-    replace: {
-      build: {
-        options: {
-          patterns: [{
-            match: /[\"\']img\//g,
-            replacement: '"/static/img'
-          }, {
-            match: /[\"\']css\//g,
-            replacement: '"/static/css'
-          }, {
-            match: /[\"\']js\//g,
-            replacement: '"/static/js' 
-          }]
-        },
-        files: [{
-          expand: true,
-          src: [
-            "build/css/style.css",
-            "build/*.html"
-          ]
-        }]
-      }
-    },
-
-
-
-    // ужать style.css
-    cssmin: {
-
-      develop: {
-        options: {
-          keepSpecialComments: 0,
-        },
-        files: {
-          "source/css/style.min.css": ["source/css/style.css"],
-        }
-      },
-
-      build: {
-        options: {
-          keepSpecialComments: 0,
-        },
-        files: {
-          "build/css/style.min.css": ["build/css/style.css"],
-        }
-      },
-
-    },
-
-
-
-    // "причесать" less-файлы
-    csscomb: {
-      style: {
-        expand: true,
-        src: [
-          "source/less/*.less",
-          "source/less/components/*.less",
-        ]
-      }
-    },
-
-
-
-    // сделать спрайт
+    // make spritesheet
     sprite: {
-      all: {
+      images: {
         src: 'source/img/sprites/*.png',
         dest: 'source/img/spritesheet.png',
         destCss: 'source/less/components/sprites.less',
         algorithm: 'top-down',
-        padding: 10,
+        padding: 10
       }
     },
 
-
-
-    // оптимизировать изображения
+    // optimize images
     imagemin: {
       images: {
         options: {
@@ -134,119 +72,73 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ["build/img/*.{png,jpg,gif,svg}"]
+          src: "build/img/*.{png,jpg,gif,svg}"
         }]
       }
     },
 
-
-
-    // объединить js-файлы
+    // concatenate js files
     concat: {
-
-      develop: {
-        src: [
-          'source/js/script.js',
-          'source/js/plagins/*.js',
-        ],
-        dest: 'source/js/script.js',
-      },
-
-      build: {
-        src: [
-          'source/js/script.js',
-          'source/js/plagins/*.js',
-        ],
-        dest: 'build/js/script.js',
-      },
-
+      scrypts: {
+        src: 'source/js/**/*.js',
+        dest: 'build/js/script.js'
+      }
     },
 
-
-
-    // ужать js-файлы
+    // compress script.js into script.min.js
     uglify: {
-
-      develop: {
-        src: 'source/js/script.js',
-        dest: 'source/js/script.min.js',
-      },
-      
-      build: {
+      scrypts: {
         src: 'build/js/script.js',
-        dest: 'build/js/script.min.js',
-      },
-
-      
+        dest: 'build/js/script.min.js'
+      }
     },
 
-
-
-    // проверить script.js на наличие ошибок
-    jshint: {
-      // использовать jshint-stylish для наглядного представления ошибок
-      options: {
-        reporter: require('jshint-stylish')
-      },
-      scrypt: [
-        'Gruntfile.js',
-        'source/js/script.js',
-      ],
-    }
-
-
-
-    // следить за изменениями и обновлять style.min.css, спрайт и sript.min.js
+    // watch for changes in less and js files and images
     watch: {
-
+      options: {
+        livereload: true
+      },
       style: {
-        files: [
-          "source/less/*.less",
-          "source/less/components/*.less",
-        ],
+        files: "source/less/**/*.less",
         tasks: [
-          'less:develop',
-          'cssmin:develop',
+          "less",
+          "autoprefixer",
+          "combine_mq",
+          "cssmin",
+          "csscomb"
         ],
         options: {
-          spawn: false,
-        },
+          spawn: false
+        }
       },
-
-      sprite: {
-        files: ['source/img/sprites/*.png'],
-        tasks: ['sprite'],
-        options: {
-          spawn: false,
-        },
-      },
-
       scripts: {
-        files: [
-          'source/js/*.js',
-          'source/js/plugins/*.js'
-        ],
+        files: 'source/js/**/*.js',
         tasks: [
-          'concat:develop', 
-          'uglify:develop'
+          'concat', 
+          'uglify'
         ],
         options: {
-            spawn: false,
-        },
+            spawn: false
+        }
       },
-
+      images: {
+        files: "source/img/**/*.{png,jpg,gif,svg}",
+        tasks: [
+          "sprite",
+          "imagemin"
+        ],
+        options: {
+          spawn: false
+        }
+      }
     },
 
-
-
-    // удалить папку build
+    // remove "build/"
     clean: {
       build: ["build"]
     },
 
-
-
-    // скопировать из папки source в папку build все html-файлы, папку с изображениями и папку со шрифтами
+    // copy html, images and fonts from "source/" into "build/"
     copy: {
       build: {
         files: [{
@@ -255,36 +147,27 @@ module.exports = function(grunt) {
           src: [
             "*.html",
             "img/*.{png,jpg,gif,svg}",
-            "font"
+            "font/*"
           ],
           dest: "build"
         }]
       }
-    },
-
-
-
+    }
+    
   });
 
   grunt.registerTask('build', [
-    "clean",  // удалить папку build
-    "copy",  // скопировать из папки source в папку build все html-файлы, папку с изображениями и папку со шрифтами
-    "less:build",  // скомпилировать source/less/style.less в build/css/style.css
-    "autoprefixer",  // добавить префиксы
-    "combine_mq",  // объединить медиавыражения ?
-    "cssmin:build",  // ужать style.css
-    "imagemin",  // оптимизировать изображения
-//    "replace",
-    "concat:build",  // объединить js-файлы
-    "uglify:build",  // ужать js-файлы
-  ]);
-  
-  grunt.registerTask('develop', [
-    "sprite",  // создать spritesheet.png и sprites.less
-    "less:develop",  // скомпилировать source/less/style.less в source/css/style.css
-    "cssmin:develop",  // ужать style.css
-    "concat:develop",  // объединить js-файлы
-    "uglify:develop",  // ужать js-файлы
+    "clean",         // remove "build/"
+    "copy",          // copy html, images and fonts from "source/" into "build/"
+    "sprite",        // make spritesheet
+    "imagemin",      // optimize images
+    "less",          // compile style.less into style.css
+    "autoprefixer",  // add prefixes
+    "combine_mq",    // combine media queries
+    "cssmin",        // compress style.css into style.min.css
+    "csscomb",       // "comb" style.css
+    "concat",        // concatenate js files
+    "uglify"         // compress script.js into script.min.js
   ]);
 
 };

@@ -1,5 +1,4 @@
 .socials {
-
   .ul-reset;
   font-size: 0;
   text-align: center;
@@ -7,7 +6,7 @@
   &__item {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right: ;
 
     &:last-child {
       margin-right: 0;
@@ -15,37 +14,41 @@
   }
   &__link {
     display: block;
-    width: 40px;
-    height: 40px;
-//    font-size: 16px;
+    width: ;
+    height: ;
+    color: ;
+    line-height: ;
     background-color: ;
     border-radius: 50%;
     transition: 
       color .15s,
       background-color .15s;
 
-    &:hover{
-      color: ;
+    &:hover {
       background-color: ;
     }
-    &:active{
+    
+    &:active {
       color: ;
       background-color: ;
     }
   }
+  
   &__icon {
     display: inline-block;
     vertical-align: baseline;
-//    font-size: 16px;
-    line-height: 40px;
+    font-size: 16px;
     
-    &:before {
+    // in case when using sprites
+    
+    &::before {
       content: "";
       display: inline-block;
       vertical-align: middle;
-      background: url(../img/spritesheet.png) no-repeat;
+      background: transparent url(../img/spritesheet.png) no-repeat;
     }
-    &--modifier:before {
+    
+    &--modifier::before {
       width: @modifier-width;
       height: @modifier-height;
       background-position: @modifier-offset-x @modifier-offset-y;

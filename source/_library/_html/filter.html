@@ -1,0 +1,43 @@
+<!-- removed "/" in action to make btn:submit to work in the Firefox -->
+<form class="filter" action="echo" method="post">
+  <!-- checkbox -->
+  <fieldset class="filter__fieldset">
+    <legend class="filter__heading"></legend>
+    <ul class="filter__list">
+      <li class="filter__item">
+        <input class="filter__input" name="" id="" type="checkbox">
+        <label class="filter__label" for=""></label>
+      </li>
+    </ul>
+  </fieldset>
+  
+  <!-- radio -->
+  <fieldset class="filter__fieldset">
+    <legend class="filter__heading"></legend>
+    <ul class="filter__list">
+      <li class="filter__item">
+        <input class="filter__input" name="" id="" type="radio">
+        <label class="filter__label" for=""></label>
+      </li>
+    </ul>
+  </fieldset>
+  
+  <!-- custom range (js: input width = its value width) -->
+  <fieldset class="filter__fieldset">
+    <legend class="filter__heading"></legend>
+    <div class="filter__range">
+      <div class="filter__scale">
+        <div class="filter__bar" style="width: 80%"></div>
+      </div>
+      <div class="filter__toggle  filter__toggle--min"></div>
+      <div class="filter__toggle  filter__toggle--max"></div>
+    </div>
+    
+    <div class="filter__controls">
+      <label class="filter__range-label">From <input class="filter__min-price" name="min-price" type="number" value="" onkeypress="this.style.width = ((this.value.length + 1)*8) + 'px';"></label>
+      <label class="filter__range-label">to <input class="filter__max-price" name="max-price" type="number" value="" onkeypress="this.style.width = ((this.value.length + 1)*8) + 'px';"></label>
+    </div>
+  </fieldset>
+  
+  <button class="btn  btn--modifier  btn--filter" type="submit"></button>
+</form>

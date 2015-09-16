@@ -1,0 +1,21 @@
+// for elements with icon going first
+
+.item {
+  position: relative;
+  padding-top: 50px;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background: transparent url(../img/spritesheet.png) no-repeat;
+  }
+  
+  &:nth-child(1)::before {
+    width: @width;
+    height: @height;
+    margin-left: -(@width/2);
+    background-position: @x @y;
+  }
+}

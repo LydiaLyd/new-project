@@ -28,7 +28,7 @@
   text-decoration: none;
 }
 
-.heading-underline(center) {
+.underline(center) {
   content: "";
   position: absolute;
   top: 100%;
@@ -38,7 +38,7 @@
   background-color: #f57365;
 }
 
-.heading-underline(left) {
+.underline(left) {
   content: "";
   position: absolute;
   top: 100%;
@@ -48,21 +48,7 @@
   background-color: #f57365;
 }
 
-// &::before
-.icon-top(@width, @height, @mb) {
-  content: "";
-  display: block;
-  width: @width;
-  height: @height;
-  .center;
-  margin-bottom: @mb;
-  background: transparent url(../img/spritesheet.png) no-repeat;
-}
-//&--modifier::before {
-//  background-position: x y;
-//}
-
-// &::after
+// for &::after
 .clearfix() {
   content: "";
   display: table;
