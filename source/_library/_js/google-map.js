@@ -11,7 +11,8 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
   // customize image
   // var image = "image.source";
-  var myLatLng = new google.maps.LatLng(34.87,-111.76);
+  // customize coordinates
+  var myLatLng = new google.maps.LatLng(x,y);
   var beachMarker = new google.maps.Marker({
     position: myLatLng,
     map: map,

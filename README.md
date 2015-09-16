@@ -1,1 +1,1 @@
-A template for use in new projects.
+A template for usage in new projects.
