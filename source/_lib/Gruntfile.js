@@ -98,7 +98,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      html: {
+      markup: {
         files: "source/*.html",
         tasks: "copy",
         options: {
