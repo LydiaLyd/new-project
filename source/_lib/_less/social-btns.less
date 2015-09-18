@@ -12,6 +12,7 @@
       margin-right: 0;
     }
   }
+
   &__link {
     display: block;
     width: ;
@@ -20,34 +21,33 @@
     line-height: ;
     background-color: ;
     border-radius: 50%;
-    transition: 
-      color .15s,
-      background-color .15s;
+    transition: color .15s,
+                background-color .15s;
 
     &:hover {
       background-color: ;
     }
-    
+
     &:active {
       color: ;
       background-color: ;
     }
   }
-  
+
   &__icon {
     display: inline-block;
     vertical-align: baseline;
     font-size: 16px;
-    
-    // in case when using sprites
-    
+
+    // in case when we're using sprites
+
     &::before {
       content: "";
       display: inline-block;
       vertical-align: middle;
       background: transparent url(../img/spritesheet.png) no-repeat;
     }
-    
+
     &--modifier::before {
       width: @modifier-width;
       height: @modifier-height;

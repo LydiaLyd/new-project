@@ -2,10 +2,11 @@
 
 .slider {
   position: relative;
-  
+
   &__input {
     display: none;
   }
+
   &__controls {
     position: absolute;
     bottom: 10%;
@@ -17,6 +18,7 @@
     line-height: 20px;
     text-align: center;
   }
+
   &__label {
     display: inline-block;
     width: 20px;
@@ -26,20 +28,23 @@
     background-color: #000;
     cursor: pointer;
     opacity: .5;
-    
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   &__input[id="toggle-1"]:checked ~ &__controls &__label[for="toggle-1"],
   &__input[id="toggle-2"]:checked ~ &__controls &__label[for="toggle-2"],
   &__input[id="toggle-3"]:checked ~ &__controls &__label[for="toggle-3"] {
     opacity: 1;
   }
+
   &__slides {
     position: relative;
     height: 400px;
   }
+
   &__slide {
     position: absolute;
     width: 100%;
@@ -47,15 +52,18 @@
     opacity: 0;
     transition: opacity .25s;
   }
+
   &__input[id="toggle-1"]:checked ~ &__slides &__slide:nth-child(1),
   &__input[id="toggle-2"]:checked ~ &__slides &__slide:nth-child(2),
   &__input[id="toggle-3"]:checked ~ &__slides &__slide:nth-child(3) {
     z-index: 1;
     opacity: 1;
   }
+
   &__link {
     display: block;
   }
+
   &__image {
     display: block;
     width: 100%;
@@ -69,10 +77,11 @@
 
 .slider {
   position: relative;
-  
+
   &__input {
     display: none;
   }
+
   &__controls {
     position: absolute;
     bottom: 10%;
@@ -84,6 +93,7 @@
     line-height: 20px;
     text-align: center;
   }
+
   &__label {
     display: inline-block;
     width: 20px;
@@ -93,44 +103,53 @@
     background-color: #000;
     cursor: pointer;
     opacity: .5;
-    
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   &__input[id="toggle-1"]:checked ~ &__controls &__label[for="toggle-1"],
   &__input[id="toggle-2"]:checked ~ &__controls &__label[for="toggle-2"],
   &__input[id="toggle-3"]:checked ~ &__controls &__label[for="toggle-3"] {
     opacity: 1;
   }
+
   &__slides-wrap {
     width: 100%;
   }
+
   &__slides {
     width: 300%;
     transition: transform .25s;
-    
+
     &--clearfix {
       .clearfix;
     }
   }
+
   &__input[id="toggle-1"]:checked ~ &__slides-wrap &__slides  {
     transform: translateX(0);
   }
+
   &__input[id="toggle-2"]:checked ~ &__slides-wrap &__slides  {
     transform: translateX(-33.33333333333333%);
   }
+
   &__input[id="toggle-3"]:checked ~ &__slides-wrap &__slides  {
     transform: translateX(-66.66666666666666%);
   }
+
   &__slide {
     float: left;
     width: 33.33333333333333%;
     height: 400px;
   }
+
   &__link {
     display: block;
   }
+
   &__image {
     display: block;
     width: 100%;

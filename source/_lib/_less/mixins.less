@@ -28,24 +28,44 @@
   text-decoration: none;
 }
 
-.underline(center) {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 25%;
-  right: 25%;
-  height: 1px;
-  background-color: #f57365;
+.fieldset-reset() {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  border: none;
 }
 
-.underline(left) {
+// for &::after
+.underline(center, @color) {
   content: "";
   position: absolute;
   top: 100%;
-  left: 25%;
-  right: 25%;
+  left: 0;
+  right: 0;
   height: 1px;
-  background-color: #f57365;
+  background-color: @color;
+}
+
+// for &::after
+.underline(center, @left, @right, @color) {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: @left;
+  right: @right;
+  height: 1px;
+  background-color: @color;
+}
+
+// for &::after
+.underline(left, @width, @color) {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: @width;
+  height: 1px;
+  background-color: @color;
 }
 
 // for &::after
