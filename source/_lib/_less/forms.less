@@ -1,0 +1,321 @@
+// custom checkbox #1
+
+input[type="checkbox"]:enabled,
+input[type="checkbox"]:disabled {
+  display: none;
+}
+
+input[type="checkbox"]:enabled + label {
+  position: relative;
+  display: block;
+  padding-left: ;
+  cursor: pointer;
+
+  // pseudo checkbox
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    color: ;
+    font-family: ;
+    transition: color .15s;
+  }
+
+  &:hover::before {
+    color: ;
+  }
+
+  input[type="checkbox"]:enabled:checked + &::before {
+    content: "";
+  }
+
+  input[type="checkbox"]:disabled + &::before {
+    opacity: .3;
+  }
+}
+
+
+
+// custom radio
+
+input[type="radio"]:enabled,
+input[type="radio"]:disabled {
+  display: none;
+}
+
+input[type="radio"]:enabled + label {
+  position: relative;
+  display: block;
+  padding-left: ;
+  cursor: pointer;
+
+  // pseudo radio
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    color: ;
+    font-family: ;
+    transition: color .15s;
+  }
+
+  &:hover::before {
+    color: ;
+  }
+
+  input[type="radio"]:enabled:checked + &::before {
+    content: "";
+  }
+
+  input[type="radio"]:disabled + &::before {
+    opacity: .3;
+  }
+}
+
+
+
+// custom checkbox #2 (looks like a switcher: (o ) )
+
+.label {
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.checkbox:enabled,
+.checkbox:disabled {
+  display: none;
+}
+
+.text {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 3em;
+
+  // pseudo checkbox
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 1em;
+    margin-top: -.5em;
+  }
+
+  &::before {
+    width: 2em;
+    background: #ddd;
+    border-radius: .5em;
+  }
+
+  &::after {
+    width: 1em;
+    background: #999;
+    border-radius: 50%;
+    transition: left .14s,
+                background-color .14s;
+
+    .checkbox:enabled:checked + & {
+      left: 1em;
+      background-color: #87eb12;
+    }
+  }
+}
+
+
+
+// input:number with hidden arrows
+
+input[type="number"] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+
+
+// filter
+
+.filter {
+
+  &__fieldset {
+    .fieldset-reset;
+  }
+
+  &__heading {
+
+  }
+
+  &__list {
+    .ul-reset;
+  }
+
+  &__item {
+    margin-bottom: ;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // custom checkboxes
+
+  &__checkbox:enabled,
+  &__checkbox:disabled {
+    display: none;
+  }
+
+  &__checkbox:enabled + &__label {
+    position: relative;
+    display: block;
+    padding-left: ;
+    cursor: pointer;
+
+    // pseudo checkbox
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      color: ;
+      font-family: ;
+      transition: color .15s;
+    }
+
+    &:hover::before {
+      color: ;
+    }
+
+    .filter__checkbox:enabled:checked + &::before {
+      content: "";
+    }
+
+    .filter__checkbox:disabled + &::before {
+      opacity: .3;
+    }
+  }
+
+  // custom radio
+
+  &__radio:enabled,
+  &__radio:disabled {
+    display: none;
+  }
+
+  &__radio:enabled + &__label {
+    position: relative;
+    display: block;
+    padding-left: ;
+    cursor: pointer;
+
+    // pseudo radio
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      color: ;
+      font-family: ;
+      transition: color .15s;
+    }
+
+    &:hover::before {
+      color: ;
+    }
+
+    .filter__radio:enabled:checked + &::before {
+      content: "";
+    }
+
+    .filter__radio:disabled + &::before {
+      opacity: .3;
+    }
+  }
+
+  // custom range
+
+  &__range {
+    position: relative;
+    height: ;
+    padding-top: ;
+    padding-bottom: ;
+  }
+
+  &__scale {
+    height: ;
+    background-color: ;
+  }
+
+  &__bar {
+    height: inherit;
+    background-color: ;
+  }
+
+  &__toggle {
+    position: absolute;
+    top: 50%;
+    width: ;
+    height: ;
+    margin-top: ;
+    border: ;
+    background-color: ;
+    cursor: pointer;
+    border-radius: ;
+    transition: background .15s;
+
+    &--min {
+      left: 0;
+    }
+
+    &--max {
+      left: ;
+    }
+
+    &:hover {
+      background-color: ;
+    }
+  }
+
+  &__controls {
+
+  }
+
+  &__range-label {
+
+  }
+
+  &__min-price,
+  &__max-price {
+    width: 1em;
+    max-width: ;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    // hide arrows
+    -moz-appearance: textfield;
+
+    // hide arrows
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  &__min-price {
+
+  }
+
+  &__max-price {
+
+  }
+}

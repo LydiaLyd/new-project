@@ -23,3 +23,32 @@
     }
   }
 }
+
+
+
+// btn--arrow
+// not ideal: line-height should % 2 = 0,
+// otherwise there will be different heights of the btn and triangle
+
+  @btn-arrow-lh: 1.96em;
+
+  // use line-height instead padding-top/bottom;
+  &--arrow {
+    position: relative;
+    margin-right: 1em;
+    padding: 0 .5em 0 1em;
+    color: #fff;
+    line-height: @btn-arrow-lh;
+    background: #f04;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      border-width: @btn-arrow-lh/2 0 @btn-arrow-lh/2 1em;
+      border-style: solid;
+      border-color: transparent transparent transparent #f04;
+    }
+  }
