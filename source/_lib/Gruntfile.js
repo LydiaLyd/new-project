@@ -132,7 +132,8 @@ module.exports = function(grunt) {
         files: "source/img/**/*.{png,jpg,gif,svg}",
         tasks: [
           "sprite",
-          "imagemin"
+          "imagemin",
+          "copy"
         ],
         options: {
           spawn: false
@@ -165,9 +166,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     "clean",         // remove "build/"
-    "copy",          // copy html, images and fonts from "source/" into "build/"
     "sprite",        // make spritesheet
     "imagemin",      // optimize images
+    "copy",          // copy html, images and fonts from "source/" into "build/"
     "less",          // compile style.less into style.css
     "autoprefixer",  // add prefixes
     "combine_mq",    // combine media queries

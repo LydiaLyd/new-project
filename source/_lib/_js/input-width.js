@@ -1,6 +1,6 @@
  // пыталась изменить расчет ширины input:number по его содержимому.
  // естественно, ничего не работает - в js я полный идиот.
- // пока скрипт вставлен инлайново (он у меня работает только так).
+ // скрипт у меня работает только инлайново.
 
 var minPrice = document.querySelector("[name=min-price]");
 var maxPrice = document.querySelector("[name=max-price]");
