@@ -1,138 +1,157 @@
+/////////////////
 // Section > text
+/////////////////
 
-.section {
+.sect {
 
   &__inner {
-    .inner();
-    padding: ;
+    .inner(992px);
+    padding: 50px 25px;
+
+    .childs-reset;
   }
 
   &__heading {
-    margin-top: 0;
+
   }
 
   &__text {
-    margin-bottom: 0;
+
   }
 }
 
 
 
-// Section > columns
 
-.section {
+
+////////////////////
+// Section > columns
+////////////////////
+
+.sect {
 
   &__inner {
-    .inner();
+    .inner(992px);
+    padding: 50px 25px;
   }
 
   &__text-wrap {
-    padding: ;
+    margin-bottom: 20px;
+
+    .childs-reset;
   }
 
   &__heading {
-    margin-top: ;
-    margin-bottom: 0;
+
   }
 
   &__text {
-    margin-top: 0;
-    margin-bottom: 0;
+
   }
 
   &__columns {
     font-size: 0;
 
-    &--clearfix {
-      .clearfix;
-    }
+    .clearfix;
   }
 
   &__column {
     display: inline-block;
     vertical-align: top;
-    width: ;
-    margin-right: ;
+    width: 280px;
     font-size: 16px;
 
-    &:last-child {
-      margin-right: 0;
+    &:not(:nth-child(3n+3)) {
+      margin-right: 20px;
     }
+
+    .childs-reset;
   }
 
   &__column-heading {
-    margin-top: ;
-    margin-bottom: ;
+
   }
 
   &__column-text {
-    margin-top: ;
-    margin-bottom: 0;
+
   }
 }
 
-// Section > list columns
 
-.section {
+
+
+
+/////////////////////////
+// Section > list columns
+/////////////////////////
+
+.sect {
 
   &__inner {
-    .inner();
+    .inner(992px);
+    padding: 50px 25px;
   }
 
   &__text-wrap {
-    padding: ;
+    margin-bottom: 20px;
+
+    .childs-reset;
   }
 
   &__heading {
-    margin-top: ;
-    margin-bottom: 0;
+
   }
 
   &__text {
-    margin-top: 0;
-    margin-bottom: 0;
+
   }
 
   &__list {
     .ul-reset;
-    font-size: 0;
+    font-size: 0
 
-    &--clearfix {
-      .clearfix;
-    }
+    .clearfix;;
   }
 
   &__item {
     display: inline-block;
     vertical-align: top;
-    width: ;
-    margin-right: ;
+    width: 280px;
     font-size: 16px;
 
-    &:last-child {
-      margin-right: 0;
+    &:not(:nth-child(3n+3)) {
+      margin-right: 20px;
     }
+
+    .childs-reset;
   }
 
   &__item-heading {
-    margin-top: 0;
-    margin-bottom: ;
+
   }
 
   &__item-text {
-    margin-top: ;
-    margin-bottom: 0;
+
   }
 }
 
 
 
-// Section > top image
 
-.section {
+
+//////////////////////
+// Section > top image
+//////////////////////
+
+.sect {
 
   &__inner {
-    .inner();
+    .inner(992px);
+    padding: 50px 25px;
+  }
+
+  &__img-wrap {
+
   }
 
   &__image {
@@ -142,48 +161,50 @@
   }
 
   &__text-wrap {
-    padding: ;
+    margin-bottom: 20px;
+
+    .childs-reset;
   }
 
   &__heading {
-    margin-top: ;
-    margin-bottom: ;
+
   }
 
   &__text {
-    margin-top: ;
-    margin-bottom: 0;
+
   }
 }
 
 
 
-// Section > right / left image
 
-.section {
+
+///////////////////////////////
+// Section > right / left image
+///////////////////////////////
+
+.sect {
 
   &__inner {
-    .inner();
+    .inner(992px);
+    padding: 50px 25px;
 
-    &--clearfix {
-
-    }
+    .clearfix;
   }
 
   &__text-wrap {
     float: left;
     width: 50%;
-    padding: ;
+
+    .childs-reset;
   }
 
   &__heading {
-    margin-top: 0;
-    margin-bottom: ;
+
   }
 
   &__text {
-    margin-top: ;
-    margin-bottom: 0;
+
   }
 
   &__image-wrap {
@@ -193,76 +214,78 @@
 
   &__image {
     display: block;
-    width: ;
-    height: ;
+    width: 100%;
+    height: auto;
   }
 }
 
 
 
+
+
+//////////
 // Columns
+//////////
 
 &__columns {
   font-size: 0;
 
-  &--clearfix {
-    .clearfix;
-  }
+  .clearfix;
 }
 
 &__column {
   display: inline-block;
   vertical-align: top;
-  width: ;
-  margin-right: ;
+  width: 280px;
   font-size: 16px;
 
-  &:last-child {
-    margin-right: 0;
+  &:not(:nth-child(3n+3)) {
+    margin-right: 20px;
   }
+
+  .childs-reset;
 }
 
 &__column-heading {
-  margin-top: ;
-  margin-bottom: ;
+
 }
 
 &__column-text {
-  margin-top: ;
-  margin-bottom: 0;
+
 }
 
 
 
+
+
+///////////////
 // List columns
+///////////////
 
 &__list {
   .ul-reset;
   font-size: 0;
 
-  &--clearfix {
-    .clearfix;
-  }
+  .clearfix;
 }
 
 &__item {
   display: inline-block;
   vertical-align: top;
-  width: ;
-  margin-right: ;
+  width: 280px;
   font-size: 16px;
 
-  &:last-child {
-    margin-right: 0;
+  &:not(:nth-child(3n+3)) {
+    margin-right: 20px;
   }
+
+  .childs-reset;
 }
 
 &__item-heading {
-  margin-top: 0;
-  margin-bottom: ;
+
 }
 
 &__item-text {
-  margin-top: ;
-  margin-bottom: 0;
+
 }

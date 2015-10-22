@@ -3,16 +3,31 @@
 }
 
 body {
-  min-width: 320px;
-  // color: @text_color;
-  font-family: @text_font;
-  font-size: @text_size;
-  line-height: @text_line-height;
+  min-width: 480px;
+  color: @text-color;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: @link-color-hover;
+  }
+
+  &:active {
+    color: @link-color-active;
+  }
 }
 
 table,
 blockquote {
-  // размер шрифта умножим на 1.4 (чтобы получить размер, равный высоте строки) и еще раз умножим на 1.4 (чтобы получить размер вертикального отступа между таблицей и др. блоками)
-  margin-top: 1.96em;
-  margin-bottom: 1.96em;
+  // ceil((@font-size-base * 1.4 * 1.4))
+  // @font-size-base * 1.4 = line-height value
+  // result * 1.4 = margin-top/bottom value
+  margin-top: ceil((@font-size-base * 1.96));
+  margin-bottom: ceil((@font-size-base * 1.96));
 }

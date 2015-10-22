@@ -1,7 +1,7 @@
 .table {
-  border-collapse: collapse;
   font-family: Tahoma, sans-serif;
   background-color: #eee;
+  border-collapse: collapse;
 
   &__row {
     border-top: 1px solid #ddd;
@@ -52,8 +52,7 @@
       content: attr(data-th)": ";
       display: inline-block;
       vertical-align: baseline;
-      // magic number
-      width: 7em;
+      width: 7em; // magic number
       font-weight: 700;
 
       @media(min-width: 480px) {

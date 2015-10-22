@@ -1,0 +1,25 @@
+// For elements in wich an icon placed on the top
+// If we support ie8, we need to insert i.icon in html and center it via line-height
+// Remember: ie8 doesn't support :nth-child
+
+.item {
+  position: relative;
+  padding-top: 50px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    // in case when we use sprites
+    background: transparent url(../img/spritesheet.png) no-repeat;
+  }
+
+  &:nth-child(1)::before {
+    // in case when we use sprites
+    width: @icon-width;
+    height: @icon-height;
+    margin-left: -(@icon-width/2);
+    background-position: @x @y;
+  }
+}

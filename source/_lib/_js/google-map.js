@@ -1,4 +1,4 @@
-// google map customization
+// Google map customization
 
 function initialize() {
   var mapOptions = {

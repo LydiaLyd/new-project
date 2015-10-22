@@ -1,14 +1,16 @@
-// custom checkbox #1
+/////////////////////
+// Custom checkbox #1
+/////////////////////
 
-input[type="checkbox"]:enabled,
-input[type="checkbox"]:disabled {
+.checkbox:enabled,
+.checkbox:disabled {
   display: none;
 }
 
-input[type="checkbox"]:enabled + label {
+.checkbox:enabled + label {
   position: relative;
   display: block;
-  padding-left: ;
+  padding-left: 40px;
   cursor: pointer;
 
   // pseudo checkbox
@@ -17,66 +19,72 @@ input[type="checkbox"]:enabled + label {
     content: "";
     position: absolute;
     left: 0;
-    color: ;
-    font-family: ;
+    font-family: @icon-font-name;
     transition: color .15s;
   }
 
   &:hover::before {
-    color: ;
+
   }
 
-  input[type="checkbox"]:enabled:checked + &::before {
+  .checkbox:enabled:checked + &::before {
     content: "";
   }
 
-  input[type="checkbox"]:disabled + &::before {
+  .checkbox:disabled + &::before {
     opacity: .3;
   }
 }
 
 
 
-// custom radio
 
-input[type="radio"]:enabled,
-input[type="radio"]:disabled {
+
+///////////////////
+// Custom radio btn
+///////////////////
+
+.radio-btn:enabled,
+.radio-btn:disabled {
   display: none;
 }
 
-input[type="radio"]:enabled + label {
+.radio-btn:enabled + label {
   position: relative;
   display: block;
-  padding-left: ;
+  padding-left: 40px;
   cursor: pointer;
 
-  // pseudo radio
+  // pseudo radio btn
 
   &::before {
     content: "";
     position: absolute;
     left: 0;
-    color: ;
-    font-family: ;
+    font-family: @icon-font-name;
     transition: color .15s;
   }
 
   &:hover::before {
-    color: ;
+
   }
 
-  input[type="radio"]:enabled:checked + &::before {
+  .radio-btn:enabled:checked + &::before {
     content: "";
   }
 
-  input[type="radio"]:disabled + &::before {
+  .radio-btn:disabled + &::before {
     opacity: .3;
   }
 }
 
 
 
-// custom checkbox #2 (looks like a switcher: (o ) )
+
+
+//////////////////////////////////////////////////////////
+// Custom checkbox #2. looks like a switcher: (o ) -> ( o)
+//////////////////////////////////////////////////////////
 
 .label {
   display: inline-block;
@@ -107,18 +115,21 @@ input[type="radio"]:enabled + label {
     margin-top: -.5em;
   }
 
+  // ( )
   &::before {
     width: 2em;
     background: #ddd;
     border-radius: .5em;
   }
 
+  // o
   &::after {
     width: 1em;
     background: #999;
     border-radius: 50%;
-    transition: left .14s,
-                background-color .14s;
+    transition:
+      left .14s,
+      background-color .14s;
 
     .checkbox:enabled:checked + & {
       left: 1em;
@@ -129,7 +140,11 @@ input[type="radio"]:enabled + label {
 
 
 
-// input:number with hidden arrows
+
+
+//////////////////////////////////
+// Remove arrows from input:number
+//////////////////////////////////
 
 input[type="number"] {
   -moz-appearance: textfield;
@@ -142,7 +157,11 @@ input[type="number"] {
 
 
 
-// filter
+
+
+/////////
+// Filter
+/////////
 
 .filter {
 
@@ -159,7 +178,7 @@ input[type="number"] {
   }
 
   &__item {
-    margin-bottom: ;
+    margin-bottom: 20px;
 
     &:last-child {
       margin-bottom: 0;
@@ -176,7 +195,7 @@ input[type="number"] {
   &__checkbox:enabled + &__label {
     position: relative;
     display: block;
-    padding-left: ;
+    padding-left: 40px;
     cursor: pointer;
 
     // pseudo checkbox
@@ -185,13 +204,12 @@ input[type="number"] {
       content: "";
       position: absolute;
       left: 0;
-      color: ;
-      font-family: ;
+      font-family: @icon-font-name;
       transition: color .15s;
     }
 
     &:hover::before {
-      color: ;
+
     }
 
     .filter__checkbox:enabled:checked + &::before {
@@ -205,15 +223,15 @@ input[type="number"] {
 
   // custom radio
 
-  &__radio:enabled,
-  &__radio:disabled {
+  &__radio-btn:enabled,
+  &__radio-btn:disabled {
     display: none;
   }
 
-  &__radio:enabled + &__label {
+  &__radio-btn:enabled + &__label {
     position: relative;
     display: block;
-    padding-left: ;
+    padding-left: 40px;
     cursor: pointer;
 
     // pseudo radio
@@ -222,20 +240,19 @@ input[type="number"] {
       content: "";
       position: absolute;
       left: 0;
-      color: ;
-      font-family: ;
+      font-family: @icon-font-name;
       transition: color .15s;
     }
 
     &:hover::before {
-      color: ;
+
     }
 
-    .filter__radio:enabled:checked + &::before {
+    .filter__radio-btn:enabled:checked + &::before {
       content: "";
     }
 
-    .filter__radio:disabled + &::before {
+    .filter__radio-btn:disabled + &::before {
       opacity: .3;
     }
   }
@@ -244,43 +261,42 @@ input[type="number"] {
 
   &__range {
     position: relative;
-    height: ;
-    padding-top: ;
-    padding-bottom: ;
+    height: 20px;
+    padding-top: 9px;
+    padding-bottom: 9px;
   }
 
   &__scale {
-    height: ;
-    background-color: ;
+    height: 2px;
+    background-color: fade(#222, 20);
   }
 
   &__bar {
     height: inherit;
-    background-color: ;
+    background-color: #222;
   }
 
   &__toggle {
     position: absolute;
     top: 50%;
-    width: ;
-    height: ;
-    margin-top: ;
-    border: ;
-    background-color: ;
+    .square(20px);
+    margin-top: -10px;
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 50%;
     cursor: pointer;
-    border-radius: ;
-    transition: background .15s;
+    transition: background-color .15s;
 
     &--min {
       left: 0;
     }
 
     &--max {
-      left: ;
+      left: 50%;
     }
 
     &:hover {
-      background-color: ;
+      background-color: darken(#fff, 20%);
     }
   }
 
@@ -295,12 +311,12 @@ input[type="number"] {
   &__min-price,
   &__max-price {
     width: 1em;
-    max-width: ;
+    max-width: 100px;
     padding-top: 0;
     padding-bottom: 0;
     border: none;
-    outline: none;
     background-color: transparent;
+    outline: none;
     // hide arrows
     -moz-appearance: textfield;
 
@@ -319,3 +335,17 @@ input[type="number"] {
 
   }
 }
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+// Change placeholder color (все вместе не писать, иначе не сработает)
+//////////////////////////////////////////////////////////////////////
+
+input[type="search"]::-moz-placeholder { color: #ffd595; } // not working :(
+input[type="search"]::-webkit-input-placeholder { color: #ffd595; }
+input[type="search"]:-ms-input-placeholder { color: #ffd595; }
+input[type="search"]::-ms-input-placeholder { color: #ffd595; }
+input[type="search"]::placeholder { color: #ffd595; }

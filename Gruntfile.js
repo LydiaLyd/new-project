@@ -34,6 +34,11 @@ module.exports = function(grunt) {
         files: {
           "build/css/style.min.css": "build/css/style.css"
         }
+      },
+      ie: {
+        files: {
+          "build/css/ie.min.css": "build/css/ie.css"
+        }
       }
     },
 
@@ -154,10 +159,21 @@ module.exports = function(grunt) {
           cwd: "source",
           src: [
             "*.html",
+            "!_components-library.html",
             "img/*.{png,jpg,gif,svg}",
             "font/*"
           ],
           dest: "build"
+        }]
+      },
+      ie8: {
+        files: [{
+          expand: true,
+          cwd: "source/less/css/",
+          src: [
+            "ie.css"
+          ],
+          dest: "build/css"
         }]
       }
     }
@@ -168,11 +184,13 @@ module.exports = function(grunt) {
     "clean",         // remove "build/"
     "sprite",        // make spritesheet
     "imagemin",      // optimize images
-    "copy",          // copy html, images and fonts from "source/" into "build/"
+    "copy:build",    // copy html, images and fonts from "source/" into "build/"
+    // "copy:ie",      // copy ie.css from "source/less/css" into "build/css"
     "less",          // compile style.less into style.css
     "autoprefixer",  // add prefixes
     "combine_mq",    // combine media queries
-    "cssmin",        // compress style.css into style.min.css
+    "cssmin:build",  // compress style.css into style.min.css
+    // "cssmin:ie",    // compress ie.css into ie.min.css
     "csscomb",       // "comb" style.css
     "concat",        // concatenate js files
     "uglify"         // compress script.js into script.min.js

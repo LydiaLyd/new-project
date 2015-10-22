@@ -1,14 +1,8 @@
-<!-- custom (pseudo) checkbox #2 (looks like a switcher) -->
-
-<label class="label"><input class="checkbox" name="custom-checkbox" type="checkbox"><span class="text">включить</span>
-</label>
-
-
-
-<!-- filter -->
+<!-- Filter -->
 
 <!-- removed "/" in action to make btn:submit to work in the Firefox -->
 <form class="filter" action="echo" method="post">
+
   <!-- checkboxes -->
   <fieldset class="filter__fieldset">
     <legend class="filter__heading"></legend>
@@ -20,20 +14,21 @@
     </ul>
   </fieldset>
 
-  <!-- radio -->
+  <!-- radio btns -->
   <fieldset class="filter__fieldset">
     <legend class="filter__heading"></legend>
     <ul class="filter__list">
       <li class="filter__item">
-        <input class="filter__radio" name="" id="" type="radio">
+        <input class="filter__radio-btn" name="" id="" type="radio">
         <label class="filter__label" for=""></label>
       </li>
     </ul>
   </fieldset>
 
-  <!-- custom range (js: input width = its value width) -->
+  <!-- custom range (js do this: input width == its value width) -->
   <fieldset class="filter__fieldset">
     <legend class="filter__heading"></legend>
+
     <div class="filter__range">
       <div class="filter__scale">
         <div class="filter__bar" style="width: 80%"></div>
@@ -43,10 +38,28 @@
     </div>
 
     <div class="filter__controls">
-      <label class="filter__range-label">From <input class="filter__min-price" name="min-price" type="number" value="" onkeypress="this.style.width = ((this.value.length + 1)*8) + 'px';"></label>
-      <label class="filter__range-label">to <input class="filter__max-price" name="max-price" type="number" value="" onkeypress="this.style.width = ((this.value.length + 1)*8) + 'px';"></label>
+      <!-- TO DO: to make external script -->
+      <label class="filter__range-label">
+        From
+        <input class="filter__min-price" name="min-price" type="number" value="0" onkeypress="this.style.width = ((this.value.length + 1)*8) + 'px';">
+      </label>
+      <label class="filter__range-label">
+        to
+        <input class="filter__max-price" name="max-price" type="number" value="100000" onkeypress="this.style.width = ((this.value.length + 1)*8) + 'px';">
+      </label>
     </div>
   </fieldset>
 
   <button class="btn  btn--modifier  btn--filter" type="submit"></button>
 </form>
+
+
+
+
+
+<!-- Custom (pseudo) checkbox #2 (looks like a switcher) -->
+
+<label class="label">
+  <input class="checkbox" name="" type="checkbox">
+  <span class="text">Включить</span>
+</label>

@@ -1,3 +1,7 @@
+////////////
+// Centering
+////////////
+
 .center() {
   margin-left: auto;
   margin-right: auto;
@@ -16,6 +20,43 @@
   margin-right: auto;
 }
 
+
+
+
+
+/////////////
+// Clearfixes
+/////////////
+
+.clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// taken from bootstrap 3
+.clearfix(bs) {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+
+
+
+
+/////////
+// Resets
+/////////
+
 .ul-reset() {
   margin-top: 0;
   margin-bottom: 0;
@@ -28,43 +69,118 @@
   text-decoration: none;
 }
 
-.heading-underline(center) {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 25%;
-  right: 25%;
-  height: 1px;
-  background-color: #f57365;
+.fieldset-reset() {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  border: none;
 }
 
-.heading-underline(left) {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 25%;
-  right: 25%;
-  height: 1px;
-  background-color: #f57365;
+.childs-reset() {
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
-// &::before
-.icon-top(@width, @height, @mb) {
-  content: "";
-  display: block;
+
+
+
+
+////////
+// Sizes
+////////
+
+.size(@width; @height) {
   width: @width;
   height: @height;
-  .center;
-  margin-bottom: @mb;
-  background: transparent url(../img/spritesheet.png) no-repeat;
 }
-//&--modifier::before {
-//  background-position: x y;
-//}
 
-// &::after
-.clearfix() {
-  content: "";
-  display: table;
-  clear: both;
+.square(@size) {
+  .size(@size; @size);
+}
+
+
+
+
+
+/////////////
+// Underlines
+/////////////
+
+.underline(full-width, @height, @bg-color) {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: @height;
+    background-color: @bg-color;
+  }
+}
+
+.underline(center, @gutter, @height, @bg-color) {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: @gutter / 2;
+    right: @gutter / 2;
+    height: @height;
+    background-color: @bg-color;
+  }
+}
+
+.underline(left, @width, @height, @bg-color) {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: @width;
+    height: @height;
+    background-color: @bg-color;
+  }
+}
+
+.underline(has-triangle, @gutter, @strip-height, @triangle-size, @bg-color) {
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+  }
+
+  &::before {
+    left: @gutter / 2;
+    right: @gutter / 2;
+    height: @strip-height;
+    background-color: @bg-color;
+  }
+
+  &::after {
+    left: 50%;
+    margin-left: -@triangle-size;
+    border-width: 0 @triangle-size @triangle-size @triangle-size;
+    border-style: solid;
+    border-color: transparent transparent @bg-color transparent;
+  }
+}
+
+
+
+
+
+//////////////////////////
+// a short descr goes here
+//////////////////////////
+
+.make-column(@columns; @gutter: @grid-gutter-width) {
+  float: left;
+  width: percentage((@columns / @grid-columns));
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
 }

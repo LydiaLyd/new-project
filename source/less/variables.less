@@ -1,46 +1,138 @@
-// colors
+/////////
+// Colors
+/////////
 
 @color-1: ;
 @color-2: ;
 
-@text_color: ;
-@heading_color: ;
-
-@nav-link: ;
-@nav-link--hover: ;
-@nav-link--active: ;
-@nav-link--current: ;
 
 
 
-// fonts
 
-@font-1: ;
-@font-2: ;
+/////////////
+// Typography
+/////////////
 
-@text_font: ;
-@text_size: 16px;
-@text_line-height: @text_size * 1.4;
-
-@heading_font: ;
-
-@h1_size: @text_size * 2.5;
-@h2_size: @text_size * 2;
-@h3_size: @text_size * 1.5;
-@h4_size: @text_size * 1;
-@h5_size: @text_size * .75;
-@h6_size: @text_size * .5;
-
-@h1_line-height: 1.4;
-@h2_line-height: 1.4;
-@h3_line-height: 1.4;
-@h4_line-height: 1.4;
-@h5_line-height: 1.4;
-@h6_line-height: 1.4;
+@font-family-1: "My Font", Tahoma, sans-serif;
+@font-family-2: "Another Font", Tahoma, sans-serif;
 
 
+// Text
 
+@font-size-base: 16px;
+@line-height-base: ceil((@font-size-base * 1.4));  // 23px
+@font-family-base: @font-family-1;
+@text-color: #333;
+
+
+// Headings
+
+@headings-font-weight: 700;
+
+@h1-font-size: ceil((@base-font-size * 2.5));  // 40px
+@h2-font-size: ceil((@base-font-size * 2));    // 32px
+@h3-font-size: ceil((@base-font-size * 1.5));  // 24px
+@h4-font-size: ceil((@base-font-size * 1));    // 16px
+@h5-font-size: ceil((@base-font-size * .85));  // 14px
+@h6-font-size: ceil((@base-font-size * .75));  // 12px
+
+@h1-line-height: ceil((@h1-font-size * 1.4));  // 56px
+@h2-line-height: ceil((@h2-font-size * 1.4));  // 45px
+@h3-line-height: ceil((@h3-font-size * 1.4));  // 34px
+@h4-line-height: ceil((@h4-font-size * 1.4));  // 23px
+@h5-line-height: ceil((@h5-font-size * 1.4));  // 20px
+@h6-line-height: ceil((@h6-font-size * 1.4));  // 17px
+
+@headings-font-family: @font-family-2;
+@headings-color: #222;
+
+
+
+
+
+////////
+// Links
+////////
+
+@link-color: #06aed5;
+@link-color-hover: lighten(#06aed5, 15%);
+@link-color-active: darken(#06aed5, 15%);
+
+@nav-link-color: #333;
+@nav-link-color-hover: lighten(#06aed5, 15%);
+@nav-link-color-active: lighten(#06aed5, 15%);
+@nav-link-color-current: #06aed5;
+
+
+
+
+
+//////////
+// Buttons
+//////////
+
+@btn-font-weight-base: 700;
+@btn-font-size-base: 18px;
+@btn-line-hight-base: 20px;
+
+@btn-color-default: #fff;
+@btn-bg-default: #222;
+@btn-border-color-default: #222;
+@btn-border-radius-base: 5px;
+
+
+
+
+
+////////
+// Forms
+////////
+
+@input-color: ;
+
+@input-bg: ;
+@input-border-color: ;
+@input-border-color-hover: ;
+@input-border-color-focus: ;
+
+@input-border-radius-base: 5px;
+
+
+
+
+
+//////////////
+// Iconography
+//////////////
+
+@icon-font-name: project-symbols;
+@icon-font-path: ../fonts;
+
+
+
+
+
+//////////
 // z-index
+//////////
 
-@z_1: 1;
-@z_2: 2;
+@zi-1: 1;
+@zi-2: 2;
+
+
+
+
+
+////////////////////////
+// Bootstrap 3 variables
+////////////////////////
+
+// Grid system
+@grid-columns: 12;
+@grid-gutter-width: 30px;
+
+// Media queries breakpoints
+@screen-xs-min: 480px;
+@screen-sm-min: 768px;
+@screen-md-min: 992px;
+@screen-lg-min: 1200px;

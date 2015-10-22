@@ -1,28 +1,26 @@
-<!-- Slider z-index -->
+<!-- css slider #1 (z-index) -->
 
 <div class="slider">
   <input class="slider__input" id="toggle-1" name="toggle" type="radio" checked>
   <input class="slider__input" id="toggle-2" name="toggle" type="radio">
-  <input class="slider__input" id="toggle-3" name="toggle" type="radio">
 
   <div class="slider__controls">
-    <label class="slider__label" for="toggle-1"></label>
-    <label class="slider__label" for="toggle-2"></label>
-    <label class="slider__label" for="toggle-3"></label>
+    <label class="slider__control" for="toggle-1"></label>
+    <label class="slider__control" for="toggle-2"></label>
   </div>
 
   <div class="slider__slides">
     <div class="slider__slide">
-      <a class="slider__link" href="#">
-        <img class="slider__image" src="img/" width="" height="" alt="">
-      </a>
+      <img class="slider__image" src="img/" width="" height="" alt="">
     </div>
   </div>
 </div>
 
 
 
-<!-- Slider translateX -->
+
+
+<!-- css slider #2 (translateX) -->
 
 <div class="slider">
   <input class="slider__input" id="toggle-1" name="toggle" type="radio" checked>
@@ -36,12 +34,40 @@
   </div>
 
   <div class="slider__slides-wrap">
-    <div class="slider__slides  slider__slides--clearfix">
+    <div class="slider__slides">
       <div class="slider__slide">
-        <a class="slider__link" href="#">
-          <img class="slider__image" src="img/" width="" height="" alt="">
-        </a>
+        <img class="slider__image" src="img/" width="" height="" alt="">
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- js slider (z-index) -->
+
+<div class="slider">
+  <div class="slider__controls-wrap">
+    <div class="slider__controls">
+      <div class="slider__control  slider__control--checked"></div>
+      <div class="slider__control"></div>
+      <div class="slider__control"></div>
+    </div>
+  </div>
+
+  <div class="slider__slides">
+    <div class="slider__slide  slider__slide--show">
+      <a class="slider__link" href="#">
+        <img class="slider__image" src="img/" width="" height="" alt="">
+      </a>
+    </div>
+
+    <div class="slider__slide">
+      <a class="slider__link" href="#">
+        <img class="slider__image" src="img/" width="" height="" alt="">
+      </a>
     </div>
   </div>
 </div>

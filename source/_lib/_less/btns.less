@@ -1,45 +1,51 @@
 .btn {
+  // common styles
+
   display: inline-block;
-  border: none;
-  outline: none;
+  padding: 15px 30px;
+
+  font-size: @btn-font-size-base;
+  line-height: @btn-line-hight-base;
   text-decoration: none;
   text-align: center;
-  transition: color .15s,
-              border-color .15s,
-              background-color .15s,
-              box-shadow .15s;
 
-  // &--modifier {
-  //   color: ;
-  //   background-color: ;
-  //
-  //   &:hover {
-  //     background-color: ;
-  //   }
-  //
-  //   &:active {
-  //     color: ;
-  //     background-color: ;
-  //   }
-  // }
+  color: @btn-color-default;
+  background-color: @btn-bg-default;
+  border: none;
+  outline: none;
+  border-radius: @btn-border-radius-base;
+
+  transition:
+    color .15s,
+    border-color .15s,
+    background-color .15s,
+    box-shadow .15s;
+
+  // various btn types go here
+
+  &--modifier {
+
+  }
 }
 
 
 
+
+
 // btn--arrow
-// not ideal: line-height should % 2 = 0,
+// not ideal: line-height should % 2 == 0,
 // otherwise there will be different heights of the btn and triangle
 
-  @btn-arrow-lh: 1.96em;
+  @btn-line-hight-arrow: 1.96em;
 
-  // use line-height instead padding-top/bottom;
+  // use line-height instead padding-top/bottom
   &--arrow {
     position: relative;
     margin-right: 1em;
     padding: 0 .5em 0 1em;
-    color: #fff;
-    line-height: @btn-arrow-lh;
-    background: #f04;
+
+    line-height: @btn-line-hight-arrow;
+
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
 
@@ -47,8 +53,9 @@
       content: "";
       position: absolute;
       left: 100%;
-      border-width: @btn-arrow-lh/2 0 @btn-arrow-lh/2 1em;
+      // TO DO: improve if this is possible
+      border-width: @btn-line-hight-arrow/2 0 @btn-line-hight-arrow/2 1em;
       border-style: solid;
-      border-color: transparent transparent transparent #f04;
+      border-color: transparent transparent transparent @btn-bg-default;
     }
   }
