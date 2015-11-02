@@ -111,7 +111,10 @@
 // Underlines
 /////////////
 
+
 .underline(full-width, @height, @bg-color) {
+  position: relative;
+
   &::after {
     content: "";
     position: absolute;
@@ -123,19 +126,25 @@
   }
 }
 
+
 .underline(center, @gutter, @height, @bg-color) {
+  position: relative;
+
   &::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: @gutter / 2;
-    right: @gutter / 2;
+    left: @gutter;
+    right: @gutter;
     height: @height;
     background-color: @bg-color;
   }
 }
 
+
 .underline(left, @width, @height, @bg-color) {
+  position: relative;
+
   &::after {
     content: "";
     position: absolute;
@@ -146,6 +155,7 @@
     background-color: @bg-color;
   }
 }
+
 
 .underline(has-triangle, @gutter, @strip-height, @triangle-size, @bg-color) {
   &::before, &::after {
@@ -183,4 +193,135 @@
   width: percentage((@columns / @grid-columns));
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
+}
+
+
+
+
+
+//////////////////////////
+// a short descr goes here
+//////////////////////////
+
+
+// Диагональный фон. Вариант 1 (подойдет, если фон должен быть скошен только верху).
+.bg-diagonal(@padding-top, @first-color, @second-color, @diagonal-height) {
+  padding-top: @padding-top;
+  background:
+    @second-color
+    linear-gradient(
+      to right bottom,
+      @first-color 0%,
+      @first-color 50%,
+      @second-color 50%,
+      @second-color 100%)
+    top
+    no-repeat;
+  background-size: 100% @diagonal-height;
+}
+
+
+// Диагональный фон. Вариант 2 (подойдет, если фон должен быть скошен cверху и снизу).
+.bg-gradient(@padding-top, @padding-bottom, @first-color, @second-color, @diagonal-height) {
+  position: relative;
+  padding-top: @padding-top;
+  padding-bottom: @padding-bottom;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: @diagonal-height;
+  }
+
+  &::before {
+    top: 0;
+    background:
+      @second-color
+      linear-gradient(
+        to right bottom,
+        @first-color 0%,
+        @first-color 50%,
+        @second-color 50%,
+        @second-color 100%)
+      top
+      no-repeat;
+  }
+
+  &::after{
+    bottom: 0;
+    background:
+      @second-color
+      linear-gradient(
+        to right bottom,
+        @second-color 0%,
+        @second-color 50%,
+        @first-color 50%,
+        @first-color 100%)
+      top
+      no-repeat;
+  }
+}
+
+
+// Маска внизу блока в виде перевернутого треугольника
+.bg-triangle(@padding-bottom, @zi-triangle, @triangle-height, @first-color, @second-color) {
+  position: relative;
+  padding-bottom: @padding-bottom;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    z-index: @zi-triangle;
+    width: 50%;
+    height: @triangle-height;
+  }
+
+  &::before {
+    left: 0;
+    background:
+      transparent
+      linear-gradient(
+        to top right,
+        @first-color 0%,
+        @first-color 50%,
+        @second-color 50%,
+        @second-color 100%)
+        no-repeat;
+  }
+
+  &::after {
+    right: 0;
+    background:
+      transparent
+      linear-gradient(
+        to bottom right,
+        @second-color 0%,
+        @second-color 50%,
+        @first-color 50%,
+        @first-color 100%)
+        no-repeat;
+  }
+}
+
+
+// Ярлык, повернутый на -45deg
+.has-label(@content, @zi-label, @font-weight, @bg-color) {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '@{content}';
+    position: absolute;
+    top: 10px;
+    left: -25px;
+    z-index: @zi-label;
+    width: 100px;
+    font-weight: @font-weight;
+    text-transform: uppercase;
+    background-color: @bg-color;
+    transform: rotate(-45deg);
+    transform-origin: center;
+  }
 }

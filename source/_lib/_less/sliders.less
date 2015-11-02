@@ -5,7 +5,7 @@
 .slider {
   position: relative;
 
-  &__input {
+  &__radio-btn {
     display: none;
   }
 
@@ -34,9 +34,9 @@
     }
   }
 
-  &__input[id="toggle-1"]:checked ~ &__controls &__control[for="toggle-1"],
-  &__input[id="toggle-2"]:checked ~ &__controls &__control[for="toggle-2"],
-  &__input[id="toggle-3"]:checked ~ &__controls &__control[for="toggle-3"] {
+  &__radio-btn[id="toggle-1"]:checked ~ &__controls &__control[for="toggle-1"],
+  &__radio-btn[id="toggle-2"]:checked ~ &__controls &__control[for="toggle-2"],
+  &__radio-btn[id="toggle-3"]:checked ~ &__controls &__control[for="toggle-3"] {
     opacity: 1;
   }
 
@@ -54,9 +54,9 @@
     transition: opacity .25s;
   }
 
-  &__input[id="toggle-1"]:checked ~ &__slides &__slide:nth-child(1),
-  &__input[id="toggle-2"]:checked ~ &__slides &__slide:nth-child(2),
-  &__input[id="toggle-3"]:checked ~ &__slides &__slide:nth-child(3) {
+  &__radio-btn[id="toggle-1"]:checked ~ &__slides &__slide:nth-child(1),
+  &__radio-btn[id="toggle-2"]:checked ~ &__slides &__slide:nth-child(2),
+  &__radio-btn[id="toggle-3"]:checked ~ &__slides &__slide:nth-child(3) {
     z-index: 1;
     opacity: 1;
   }
@@ -79,7 +79,7 @@
 .slider {
   position: relative;
 
-  &__input {
+  &__radio-btn {
     display: none;
   }
 
@@ -108,15 +108,16 @@
     }
   }
 
-  &__input[id="toggle-1"]:checked ~ &__controls &__control[for="toggle-1"],
-  &__input[id="toggle-2"]:checked ~ &__controls &__control[for="toggle-2"],
-  &__input[id="toggle-3"]:checked ~ &__controls &__control[for="toggle-3"] {
+  &__radio-btn[id="toggle-1"]:checked ~ &__controls &__control[for="toggle-1"],
+  &__radio-btn[id="toggle-2"]:checked ~ &__controls &__control[for="toggle-2"],
+  &__radio-btn[id="toggle-3"]:checked ~ &__controls &__control[for="toggle-3"] {
     opacity: 1;
   }
 
   &__slides-wrap {
     width: 100%;
     height: 500px;
+    overflow: hidden;
   }
 
   &__slides {
@@ -126,15 +127,15 @@
     .clearfix;
   }
 
-  &__input[id="toggle-1"]:checked ~ &__slides-wrap &__slides  {
+  &__radio-btn[id="toggle-1"]:checked ~ &__slides-wrap &__slides  {
     transform: translateX(0);
   }
 
-  &__input[id="toggle-2"]:checked ~ &__slides-wrap &__slides  {
+  &__radio-btn[id="toggle-2"]:checked ~ &__slides-wrap &__slides  {
     transform: translateX(-33.3333333333%);
   }
 
-  &__input[id="toggle-3"]:checked ~ &__slides-wrap &__slides  {
+  &__radio-btn[id="toggle-3"]:checked ~ &__slides-wrap &__slides  {
     transform: translateX(-66.6666666666%);
   }
 

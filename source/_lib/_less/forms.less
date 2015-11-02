@@ -1,6 +1,6 @@
-/////////////////////
-// Custom checkbox #1
-/////////////////////
+//////////////////
+// Custom checkbox
+//////////////////
 
 .checkbox:enabled,
 .checkbox:disabled {
@@ -21,10 +21,6 @@
     left: 0;
     font-family: @icon-font-name;
     transition: color .15s;
-  }
-
-  &:hover::before {
-
   }
 
   .checkbox:enabled:checked + &::before {
@@ -65,10 +61,6 @@
     transition: color .15s;
   }
 
-  &:hover::before {
-
-  }
-
   .radio-btn:enabled:checked + &::before {
     content: "";
   }
@@ -82,9 +74,9 @@
 
 
 
-//////////////////////////////////////////////////////////
-// Custom checkbox #2. looks like a switcher: (o ) -> ( o)
-//////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// Custom checkbox which looks like a switcher: (o ) -> ( o)
+////////////////////////////////////////////////////////////
 
 .label {
   display: inline-block;
@@ -142,11 +134,11 @@
 
 
 
-//////////////////////////////////
-// Remove arrows from input:number
-//////////////////////////////////
+////////////////////////////////////
+// Removing arrows from input:number
+////////////////////////////////////
 
-input[type="number"] {
+[type="number"] {
   -moz-appearance: textfield;
 
   &::-webkit-inner-spin-button,
@@ -167,10 +159,6 @@ input[type="number"] {
 
   &__fieldset {
     .fieldset-reset;
-  }
-
-  &__heading {
-
   }
 
   &__list {
@@ -208,10 +196,6 @@ input[type="number"] {
       transition: color .15s;
     }
 
-    &:hover::before {
-
-    }
-
     .filter__checkbox:enabled:checked + &::before {
       content: "";
     }
@@ -242,10 +226,6 @@ input[type="number"] {
       left: 0;
       font-family: @icon-font-name;
       transition: color .15s;
-    }
-
-    &:hover::before {
-
     }
 
     .filter__radio-btn:enabled:checked + &::before {
@@ -300,14 +280,6 @@ input[type="number"] {
     }
   }
 
-  &__controls {
-
-  }
-
-  &__range-label {
-
-  }
-
   &__min-price,
   &__max-price {
     width: 1em;
@@ -326,26 +298,18 @@ input[type="number"] {
       -webkit-appearance: none;
     }
   }
-
-  &__min-price {
-
-  }
-
-  &__max-price {
-
-  }
 }
 
 
 
 
 
-//////////////////////////////////////////////////////////////////////
-// Change placeholder color (все вместе не писать, иначе не сработает)
-//////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+// Change placeholder color (не группировать! а то не сработает)
+////////////////////////////////////////////////////////////////
 
-input[type="search"]::-moz-placeholder { color: #ffd595; } // not working :(
-input[type="search"]::-webkit-input-placeholder { color: #ffd595; }
-input[type="search"]:-ms-input-placeholder { color: #ffd595; }
-input[type="search"]::-ms-input-placeholder { color: #ffd595; }
-input[type="search"]::placeholder { color: #ffd595; }
+[type="search"]::-moz-placeholder { color: #ffd595; } // not working
+[type="search"]::-webkit-input-placeholder { color: #ffd595; }
+[type="search"]:-ms-input-placeholder { color: #ffd595; }
+[type="search"]::-ms-input-placeholder { color: #ffd595; }
+[type="search"]::placeholder { color: #ffd595; }

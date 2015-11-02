@@ -21,9 +21,7 @@
     padding: 10px 15px;
     text-decoration: none;
     color: @nav-link-color;
-    transition:
-      color .15s,
-      background-color .15s;
+    transition: background-color .15s;
 
     &:hover {
       color: @nav-link-color-hover;
@@ -32,5 +30,9 @@
     &:active {
       color: @nav-link-color-active;
     }
+  }
+
+  &__sr-only {
+    display: none;
   }
 }

@@ -4,15 +4,17 @@
 
 body {
   min-width: 480px;
-  color: @text-color;
-  font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: @line-height-base;
+  font-family: @font-family-base;
+  color: @text-color;
+  background-color: @body-bg;
 }
 
 a {
-  color: @link-color;
   text-decoration: none;
+  color: @link-color;
+  transition: color .15s;
 
   &:hover {
     color: @link-color-hover;

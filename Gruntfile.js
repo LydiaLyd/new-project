@@ -116,7 +116,7 @@ module.exports = function(grunt) {
           "less",
           "autoprefixer",
           "combine_mq",
-          "cssmin",
+          "cssmin:build",
           "csscomb"
         ],
         options: {
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
           dest: "build"
         }]
       },
-      ie8: {
+      ie: {
         files: [{
           expand: true,
           cwd: "source/less/css/",

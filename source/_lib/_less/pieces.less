@@ -1,6 +1,6 @@
-// For elements in wich an icon placed on the top
-// If we support ie8, we need to insert i.icon in html and center it via line-height
-// Remember: ie8 doesn't support :nth-child
+////////////////////////////////////////////////////////////////////////////////////
+// For blocks in wich an icon placed on the top
+////////////////////////////////////////////////////////////////////////////////////
 
 .item {
   position: relative;
@@ -9,17 +9,55 @@
   &::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    // in case when we use sprites
     background: transparent url(../img/spritesheet.png) no-repeat;
   }
 
   &:nth-child(1)::before {
-    // in case when we use sprites
     width: @icon-width;
     height: @icon-height;
-    margin-left: -(@icon-width/2);
+    margin-top: -@icon-height/2;
+    margin-left: -@icon-width/2;
     background-position: @x @y;
+  }
+}
+
+
+
+
+
+////////
+// Popup
+////////
+
+.popup {
+  position: fixed;
+  top: 0;
+  z-index: -1000;
+  width: 100%;
+  height: 100%;
+
+  &--show {
+    z-index: @zi-popup;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: @zi-popup-content;
+    width: 960px;
+    height: 630px;
+    margin-top: -315px;
+    margin-left: -475px;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .5;
   }
 }
