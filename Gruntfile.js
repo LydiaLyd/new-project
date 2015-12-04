@@ -6,6 +6,8 @@ module.exports = function(grunt) {
   // task configuration
   grunt.initConfig({
 
+
+
     // compile style.less into style.css
     less: {
       style: {
@@ -14,6 +16,8 @@ module.exports = function(grunt) {
         }
       }
     },
+
+
 
     // add prefixes
     autoprefixer: {
@@ -25,22 +29,27 @@ module.exports = function(grunt) {
       }
     },
 
+
+
     // compress style.css into style.min.css
     cssmin: {
       options: {
         keepSpecialComments: 0,
       },
-      build: {
+      style: {
         files: {
           "build/css/style.min.css": "build/css/style.css"
         }
       },
-      ie: {
-        files: {
-          "build/css/ie.min.css": "build/css/ie.css"
-        }
-      }
+
+      // ie_style: {
+      //   files: {
+      //     "build/css/ie.min.css": "build/css/ie.css"
+      //   }
+      // }
     },
+
+
 
     // "comb" style.css
     csscomb: {
@@ -50,6 +59,8 @@ module.exports = function(grunt) {
       }
     },
 
+
+
     // combine media queries
     combine_mq: {
       style: {
@@ -58,16 +69,20 @@ module.exports = function(grunt) {
       }
     },
 
+
+
     // make spritesheet
     sprite: {
       images: {
-        src: 'source/img/sprites/*.png',
-        dest: 'source/img/spritesheet.png',
-        destCss: 'source/less/components/sprites.less',
-        algorithm: 'top-down',
+        src: "source/img/sprites/*.png",
+        dest: "source/img/spritesheet.png",
+        destCss: "source/less/components/sprites.less",
+        algorithm: "top-down",
         padding: 10
       }
     },
+
+
 
     // optimize images
     imagemin: {
@@ -82,27 +97,34 @@ module.exports = function(grunt) {
       }
     },
 
+
+
     // concatenate js files
     concat: {
-      scrypts: {
-        src: 'source/js/**/*.js',
-        dest: 'build/js/script.js'
+      script: {
+        src: "source/js/**/*.js",
+        dest: "build/js/script.js"
       }
     },
+
+
 
     // compress script.js into script.min.js
     uglify: {
-      scrypts: {
-        src: 'build/js/script.js',
-        dest: 'build/js/script.min.js'
+      script: {
+        src: "build/js/script.js",
+        dest: "build/js/script.min.js"
       }
     },
 
-    // watch for changes in less and js files and images
+
+
+    // watch for changes in html, less, js files and images
     watch: {
       options: {
         livereload: true
       },
+
       markup: {
         files: "source/*.html",
         tasks: "copy",
@@ -110,35 +132,38 @@ module.exports = function(grunt) {
           spawn: false
         }
       },
+
       style: {
         files: "source/less/**/*.less",
         tasks: [
           "less",
           "autoprefixer",
           "combine_mq",
-          "cssmin:build",
+          "cssmin:style",
           "csscomb"
         ],
         options: {
           spawn: false
         }
       },
-      scripts: {
-        files: 'source/js/**/*.js',
+
+      script: {
+        files: "source/js/**/*.js",
         tasks: [
-          'concat',
-          'uglify'
+          "concat",
+          "uglify"
         ],
         options: {
             spawn: false
         }
       },
+
       images: {
         files: "source/img/**/*.{png,jpg,gif,svg}",
         tasks: [
           "sprite",
-          "imagemin",
-          "copy"
+          "copy",
+          "imagemin"
         ],
         options: {
           spawn: false
@@ -146,12 +171,16 @@ module.exports = function(grunt) {
       }
     },
 
-    // remove "build/"
+
+
+    // remove build/
     clean: {
       build: ["build"]
     },
 
-    // copy html, images and fonts from "source/" into "build/"
+
+
+    // copy html, images and fonts from source/ into build/
     copy: {
       build: {
         files: [{
@@ -166,34 +195,32 @@ module.exports = function(grunt) {
           dest: "build"
         }]
       },
-      ie: {
-        files: [{
-          expand: true,
-          cwd: "source/less/css/",
-          src: [
-            "ie.css"
-          ],
-          dest: "build/css"
-        }]
-      }
-    }
 
+      // ie_style: {
+      //   files: [{
+      //     expand: true,
+      //     cwd: "source/less/css/",
+      //     src: "ie.css",
+      //     dest: "build/css"
+      //   }]
+      // }
+    }
   });
 
-  grunt.registerTask('build', [
-    "clean",         // remove "build/"
-    "sprite",        // make spritesheet
-    "imagemin",      // optimize images
-    "copy:build",    // copy html, images and fonts from "source/" into "build/"
-    // "copy:ie",      // copy ie.css from "source/less/css" into "build/css"
-    "less",          // compile style.less into style.css
-    "autoprefixer",  // add prefixes
-    "combine_mq",    // combine media queries
-    "cssmin:build",  // compress style.css into style.min.css
-    // "cssmin:ie",    // compress ie.css into ie.min.css
-    "csscomb",       // "comb" style.css
-    "concat",        // concatenate js files
-    "uglify"         // compress script.js into script.min.js
+  grunt.registerTask("build", [
+    "clean",            // remove build/
+    "sprite",           // make spritesheet
+    "copy:build",       // copy html, images and fonts from source/ into build/
+    // "copy:ie_style",    // copy ie.css from "source/less/css" into "build/css"
+    "imagemin",         // optimize images
+    "less",             // compile style.less into style.css
+    "autoprefixer",     // add prefixes
+    "combine_mq",       // combine media queries
+    "cssmin:style",     // compress style.css into style.min.css
+    // "cssmin:ie_style",  // compress ie.css into ie.min.css
+    "csscomb",          // "comb" style.css
+    "concat",           // concatenate js files
+    "uglify",           // compress script.js into script.min.js
+    "watch"             // watch for changes in html, less, js files and images
   ]);
-
 };

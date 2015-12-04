@@ -1,18 +1,18 @@
 @font-face {
-  font-family: '@icon-font-name';
-  src: url('@{icon-font-path}/@icon-font-name.eot');
-  src: url('@{icon-font-path}/@icon-font-name.eot?#iefix') format('embedded-opentype'),
-       url('@{icon-font-path}/@icon-font-name.woff') format('woff'),
-       url('@{icon-font-path}/@icon-font-name.ttf') format('truetype'),
-       url('@{icon-font-path}/@icon-font-name.svg#@icon-font-name') format('svg');
+  font-family: "@icon-font_name";
+  src: url("@{icon-font_path}/@icon-font_name.eot");
+  src: url("@{icon-font_path}/@icon-font_name.eot?#iefix") format("embedded-opentype"),
+       url("@{icon-font_path}/@icon-font_name.woff") format("woff"),
+       url("@{icon-font_path}/@icon-font_name.ttf") format("truetype"),
+       url("@{icon-font_path}/@icon-font_name.svg#@icon-font_name") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class*="icon--"]::before {
+[class^="icon--"]::before {
   display: inline-block;
   vertical-align: top;
-  font-family: @icon-font-name;
+  font-family: @icon-font_name;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -22,6 +22,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-// [class*="icon--facebook"]::before { content: '\e800'; }
-// [class*="icon--twitter"]::before { content: '\e801'; }
-// [class*="icon--right"]::before { content: '\e802'; }
+// [class*="icon--facebook"]::before { content: "\e800"; }
+// [class*="icon--twitter"]::before { content: "\e801"; }
+// [class*="icon--right"]::before { content: "\e802"; }

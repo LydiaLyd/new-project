@@ -1,32 +1,11 @@
-////////////
-// Centering
-////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Most usefull
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 .center() {
   margin-left: auto;
   margin-right: auto;
 }
-
-.inner(@width) {
-  width: @width;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.inner(@min-width, @max-width) {
-  min-width: @min-width;
-  max-width: @max-width;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-
-
-
-/////////////
-// Clearfixes
-/////////////
 
 .clearfix() {
   &::after {
@@ -36,26 +15,13 @@
   }
 }
 
-// taken from bootstrap 3
-.clearfix(bs) {
-  &::before,
-  &::after {
-    content: "";
-    display: table;
-  }
-
-  &::after {
-    clear: both;
-  }
-}
 
 
 
 
-
-/////////
-// Resets
-/////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Reset
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 .ul-reset() {
   margin-top: 0;
@@ -76,11 +42,10 @@
   border: none;
 }
 
-.childs-reset() {
+.children-reset() {
   & > *:first-child {
     margin-top: 0;
   }
-
   & > *:last-child {
     margin-bottom: 0;
   }
@@ -90,29 +55,12 @@
 
 
 
-////////
-// Sizes
-////////
-
-.size(@width; @height) {
-  width: @width;
-  height: @height;
-}
-
-.square(@size) {
-  .size(@size; @size);
-}
-
-
-
-
-
-/////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // Underlines
-/////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-.underline(full-width, @height, @bg-color) {
+.underline(full-width, @height, @bg) {
   position: relative;
 
   &::after {
@@ -122,12 +70,12 @@
     left: 0;
     right: 0;
     height: @height;
-    background-color: @bg-color;
+    background-color: @bg;
   }
 }
 
 
-.underline(center, @gutter, @height, @bg-color) {
+.underline(center, @gutter, @height, @bg) {
   position: relative;
 
   &::after {
@@ -137,12 +85,12 @@
     left: @gutter;
     right: @gutter;
     height: @height;
-    background-color: @bg-color;
+    background-color: @bg;
   }
 }
 
 
-.underline(left, @width, @height, @bg-color) {
+.underline(left, @width, @height, @bg) {
   position: relative;
 
   &::after {
@@ -152,12 +100,13 @@
     left: 0;
     width: @width;
     height: @height;
-    background-color: @bg-color;
+    background-color: @bg;
   }
 }
 
 
-.underline(has-triangle, @gutter, @strip-height, @triangle-size, @bg-color) {
+// A strip and a triangle in the center
+.underline(with-triangle, @gutter, @strip-height, @triangle-size, @bg) {
   &::before, &::after {
     content: "";
     position: absolute;
@@ -165,10 +114,10 @@
   }
 
   &::before {
-    left: @gutter / 2;
-    right: @gutter / 2;
+    left: @gutter;
+    right: @gutter;
     height: @strip-height;
-    background-color: @bg-color;
+    background-color: @bg;
   }
 
   &::after {
@@ -176,7 +125,7 @@
     margin-left: -@triangle-size;
     border-width: 0 @triangle-size @triangle-size @triangle-size;
     border-style: solid;
-    border-color: transparent transparent @bg-color transparent;
+    border-color: transparent transparent @bg transparent;
   }
 }
 
@@ -184,24 +133,9 @@
 
 
 
-//////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // a short descr goes here
-//////////////////////////
-
-.make-column(@columns; @gutter: @grid-gutter-width) {
-  float: left;
-  width: percentage((@columns / @grid-columns));
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
-}
-
-
-
-
-
-//////////////////////////
-// a short descr goes here
-//////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // Диагональный фон. Вариант 1 (подойдет, если фон должен быть скошен только верху).
@@ -307,20 +241,18 @@
 
 
 // Ярлык, повернутый на -45deg
-.has-label(@content, @zi-label, @font-weight, @bg-color) {
+.has-tag(@content, @top, @left, @zi-tag, @bg) {
   position: relative;
   overflow: hidden;
 
   &::before {
-    content: '@{content}';
+    content: "@{content}";
     position: absolute;
-    top: 10px;
-    left: -25px;
-    z-index: @zi-label;
+    top: @top;
+    left: @left;
+    z-index: @zi-tag;
     width: 100px;
-    font-weight: @font-weight;
-    text-transform: uppercase;
-    background-color: @bg-color;
+    background-color: @bg;
     transform: rotate(-45deg);
     transform-origin: center;
   }

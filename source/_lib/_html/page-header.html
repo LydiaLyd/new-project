@@ -1,31 +1,11 @@
-<!--                                                     -->
-<!-- Шапка на главной стр. (логотип НЕ является ссылкой) -->
-<!--                                                     -->
-
 <header class="page-header">
-  <div class="page-header__inner">
-    <div class="page-header__logo">
-      <img class="page-header__logo-img" src="img/logo_project.png" width="" height="" alt="Project logo">
-    </div>
-
-    <div class="page-header__main-nav-wrap"></div>
-  </div>
-</header>
-
-
-
-<!--                                                     -->
-<!-- Шапка на внутренней стр. (логотип является ссылкой) -->
-<!--                                                     -->
-
-<header class="page-header">
-  <div class="page-header__inner">
-    <div class="page-header__logo">
-      <a class="page-header__logo-link" href="index.html" title="Home">
-        <img class="page-header__logo-image" src="img/logo_project.png" width="" height="" alt="Project logo">
-      </a>
-    </div>
-
-    <div class="page-header__main-nav-wrap"></div>
-  </div>
+  <a class="logo" href="index.html" title="Home">
+    <img class="logo__image" src="img/logo_project.png" width="" height="" alt="Project logo">
+  </a>
+  <nav class="main-nav">
+    <ul class="main-nav__list">
+      <li class="main-nav__item  main-nav__item--current">Link 1 <span class="main-nav__text-hidden">Current</span></li>
+      <li class="main-nav__item"><a class="main-nav__link" href="#">Link 2</a></li>
+    </ul>
+  </nav>
 </header>

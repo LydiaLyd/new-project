@@ -4,13 +4,13 @@
 ///////////////////////////////////////////////////
 
 (function() {
-  if (document.querySelector('.form')) {
-    var form = document.querySelector('.form'),
-        senderName = form.querySelector('[name=sender-name]'),
-        senderEmail = form.querySelector('[name=sender-email]'),
-        emailSubject = form.querySelector('[name=email-subject]'),
-        nameStorage = localStorage.getItem('name'),
-        emailStorage = localStorage.getItem('email');
+  if (document.querySelector(".form")) {
+    var form = document.querySelector(".form"),
+        senderName = form.querySelector("[name=sender-name]"),
+        senderEmail = form.querySelector("[name=sender-email]"),
+        emailSubject = form.querySelector("[name=email-subject]"),
+        nameStorage = localStorage.getItem("name"),
+        emailStorage = localStorage.getItem("email");
 
     if (nameStorage && emailStorage) {
       senderName.value = nameStorage;
@@ -20,9 +20,9 @@
       senderName.focus();
     };
 
-    form.addEventListener('submit', function(event) {
-      localStorage.setItem('name', senderName.value);
-      localStorage.setItem('email', senderEmail.value);
+    form.addEventListener("submit", function(event) {
+      localStorage.setItem("name", senderName.value);
+      localStorage.setItem("email", senderEmail.value);
     });
   };
 })();

@@ -1,13 +1,48 @@
-//////////////////
-// Custom checkbox
-//////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////  Most usefull  /////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
-.checkbox:enabled,
-.checkbox:disabled {
+
+// Removing arrows from input:number
+
+[type="number"] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+
+
+// Changing placeholder color (не группировать! а то не сработает)
+
+[type="search"]::-moz-placeholder { color: #ffd595; } // not working
+[type="search"]::-webkit-input-placeholder { color: #ffd595; }
+[type="search"]:-ms-input-placeholder { color: #ffd595; }
+[type="search"]::-ms-input-placeholder { color: #ffd595; }
+[type="search"]::placeholder { color: #ffd595; }
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////  Snippets  //////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////
+// Custom checkbox / radio btn
+//////////////////////////////
+
+input:enabled,
+input:disabled {
   display: none;
 }
 
-.checkbox:enabled + label {
+input:enabled + label {
   position: relative;
   display: block;
   padding-left: 40px;
@@ -19,54 +54,16 @@
     content: "";
     position: absolute;
     left: 0;
-    font-family: @icon-font-name;
+    font-family: @icon-font_name;
     transition: color .15s;
-  }
 
-  .checkbox:enabled:checked + &::before {
-    content: "";
-  }
+    input:enabled:checked + & {
+      content: "";
+    }
 
-  .checkbox:disabled + &::before {
-    opacity: .3;
-  }
-}
-
-
-
-
-
-///////////////////
-// Custom radio btn
-///////////////////
-
-.radio-btn:enabled,
-.radio-btn:disabled {
-  display: none;
-}
-
-.radio-btn:enabled + label {
-  position: relative;
-  display: block;
-  padding-left: 40px;
-  cursor: pointer;
-
-  // pseudo radio btn
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    font-family: @icon-font-name;
-    transition: color .15s;
-  }
-
-  .radio-btn:enabled:checked + &::before {
-    content: "";
-  }
-
-  .radio-btn:disabled + &::before {
-    opacity: .3;
+    input:disabled + & {
+      opacity: .3;
+    }
   }
 }
 
@@ -134,135 +131,38 @@
 
 
 
-////////////////////////////////////
-// Removing arrows from input:number
-////////////////////////////////////
+///////////////
+// custom range
+///////////////
 
-[type="number"] {
-  -moz-appearance: textfield;
+.range {
+  position: relative;
+  height: 20px;
+  padding-top: 9px;
+  padding-bottom: 9px;
 
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-  }
-}
+  &__heading {
 
-
-
-
-
-/////////
-// Filter
-/////////
-
-.filter {
-
-  &__fieldset {
-    .fieldset-reset;
-  }
-
-  &__list {
-    .ul-reset;
-  }
-
-  &__item {
-    margin-bottom: 20px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  // custom checkboxes
-
-  &__checkbox:enabled,
-  &__checkbox:disabled {
-    display: none;
-  }
-
-  &__checkbox:enabled + &__label {
-    position: relative;
-    display: block;
-    padding-left: 40px;
-    cursor: pointer;
-
-    // pseudo checkbox
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      font-family: @icon-font-name;
-      transition: color .15s;
-    }
-
-    .filter__checkbox:enabled:checked + &::before {
-      content: "";
-    }
-
-    .filter__checkbox:disabled + &::before {
-      opacity: .3;
-    }
-  }
-
-  // custom radio
-
-  &__radio-btn:enabled,
-  &__radio-btn:disabled {
-    display: none;
-  }
-
-  &__radio-btn:enabled + &__label {
-    position: relative;
-    display: block;
-    padding-left: 40px;
-    cursor: pointer;
-
-    // pseudo radio
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      font-family: @icon-font-name;
-      transition: color .15s;
-    }
-
-    .filter__radio-btn:enabled:checked + &::before {
-      content: "";
-    }
-
-    .filter__radio-btn:disabled + &::before {
-      opacity: .3;
-    }
-  }
-
-  // custom range
-
-  &__range {
-    position: relative;
-    height: 20px;
-    padding-top: 9px;
-    padding-bottom: 9px;
   }
 
   &__scale {
     height: 2px;
-    background-color: fade(#222, 20);
+    // background-color: ;
   }
 
   &__bar {
     height: inherit;
-    background-color: #222;
+    // background-color: ;
   }
 
   &__toggle {
     position: absolute;
     top: 50%;
-    .square(20px);
-    margin-top: -10px;
-    background-color: #fff;
-    border: 1px solid #222;
+    // width: ;
+    // height: ;
+    // margin-top: ;
+    // background-color: ;
+    // border: ;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color .15s;
@@ -275,41 +175,18 @@
       left: 50%;
     }
 
-    &:hover {
-      background-color: darken(#fff, 20%);
+    &:hover,
+    &:active {
+      // background-color: ;
     }
+  }
+
+  &__controls {
+
   }
 
   &__min-price,
   &__max-price {
-    width: 1em;
-    max-width: 100px;
-    padding-top: 0;
-    padding-bottom: 0;
-    border: none;
-    background-color: transparent;
     outline: none;
-    // hide arrows
-    -moz-appearance: textfield;
-
-    // hide arrows
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-    }
   }
 }
-
-
-
-
-
-////////////////////////////////////////////////////////////////
-// Change placeholder color (не группировать! а то не сработает)
-////////////////////////////////////////////////////////////////
-
-[type="search"]::-moz-placeholder { color: #ffd595; } // not working
-[type="search"]::-webkit-input-placeholder { color: #ffd595; }
-[type="search"]:-ms-input-placeholder { color: #ffd595; }
-[type="search"]::-ms-input-placeholder { color: #ffd595; }
-[type="search"]::placeholder { color: #ffd595; }

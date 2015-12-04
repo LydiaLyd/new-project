@@ -1,4 +1,4 @@
-node_modules
-build
-_temp
 _design
+_temp
+build
+node_modules

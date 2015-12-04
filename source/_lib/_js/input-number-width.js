@@ -1,37 +1,36 @@
-///////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // Changing input width
-///////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // Я не понимаю, почему это работает как надо (практически).
 // Еще: если нажать и не отпускать Back Space, поле не ссужается. Нужно исправить.
 
 (function() {
-  if (document.querySelector('[name=min-price]') && document.querySelector('[name=max-price]')) {
-    var minPrice = document.querySelector('[name=min-price]'),
-        maxPrice = document.querySelector('[name=max-price]');
+  if (document.querySelector("[name=min-price]") && document.querySelector("[name=max-price]")) {
+    var minPrice = document.querySelector("[name=min-price]"),
+        maxPrice = document.querySelector("[name=max-price]");
 
     changeWidth(minPrice);
     changeWidth(maxPrice);
 
     function changeWidth(field) {
       // поле расширяется, когда мы набираем цифры
-      field.addEventListener('keypress', function() {
+      field.addEventListener("keypress", function() {
         // 8 is the magic number
-        field.style.width = field.value.length * 8 + 'px';
+        field.style.width = field.value.length * 8 + "px";
       });
 
       // поле ссужается, когда мы убираем цифры
-      field.addEventListener('keyup', function() {
+      field.addEventListener("keyup", function() {
         // не понимаю, почему нельзя обойтись без условия
         // но с ним все работает правильно
         if (field.value.length > 0)
-          field.style.width = field.value.length * 8 + 'px';
+          field.style.width = field.value.length * 8 + "px";
       });
     }
   };
 })();
-
-
 
 
 
@@ -50,9 +49,5 @@
       &::-webkit-outer-spin-button {
         -webkit-appearance: none;
       }
-    }
-
-    [name="max-price"] {
-      width: 40px;
     }
 */

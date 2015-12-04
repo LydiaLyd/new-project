@@ -1,5 +1,5 @@
 {
-  "name": "my-project-name",
+  "name": "Project Name",
   "private": true,
   "devDependencies": {
     "grunt": "~0.4.5",

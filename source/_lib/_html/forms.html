@@ -1,65 +1,57 @@
-<!--        -->
-<!-- Filter -->
-<!--        -->
+<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - -  Filter  - - - - - - - - - - - - - - - - - - -  -  -->
+<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-<form class="filter" action="/echo" method="post">
+<div class="filter">
+  <form action="/echo" method="post">
 
-  <!-- checkboxes -->
-  <fieldset class="filter__fieldset">
-    <legend class="filter__heading"></legend>
-    <ul class="filter__list">
-      <li class="filter__item">
-        <input class="filter__checkbox" name="" id="" type="checkbox">
-        <label class="filter__label" for=""></label>
-      </li>
-    </ul>
-  </fieldset>
+    <!-- checkboxes -->
+    <fieldset class="filter__fieldset">
+      <legend class="filter__heading"></legend>
+      <ul class="filter__list">
+        <li class="filter__item">
+          <input class="filter__checkbox" name="" id="" type="checkbox">
+          <label class="filter__label" for=""></label>
+        </li>
+      </ul>
+    </fieldset>
 
-  <!-- radio btns -->
-  <fieldset class="filter__fieldset">
-    <legend class="filter__heading"></legend>
-    <ul class="filter__list">
-      <li class="filter__item">
-        <input class="filter__radio-btn" name="" id="" type="radio">
-        <label class="filter__label" for=""></label>
-      </li>
-    </ul>
-  </fieldset>
+    <!-- radio btns -->
+    <fieldset class="filter__fieldset">
+      <legend class="filter__heading"></legend>
+      <ul class="filter__list">
+        <li class="filter__item">
+          <input class="filter__radio-btn" name="" id="" type="radio">
+          <label class="filter__label" for=""></label>
+        </li>
+      </ul>
+    </fieldset>
 
-  <!-- custom range -->
-  <fieldset class="filter__fieldset">
-    <legend class="filter__heading"></legend>
-
-    <div class="filter__range">
-      <div class="filter__scale">
-        <div class="filter__bar" style="width: 80%"></div>
+    <!-- custom range -->
+    <fieldset class="range">
+      <legend class="range__heading"></legend>
+      <div class="range__scale">
+        <div class="range__bar" style="width: 80%"></div>
       </div>
-      <div class="filter__toggle  filter__toggle--min"></div>
-      <div class="filter__toggle  filter__toggle--max"></div>
-    </div>
+      <div class="range__toggle  range__toggle--min"></div>
+      <div class="range__toggle  range__toggle--max"></div>
+      <div class="range__controls">
+        <label class="range__label">From <input class="range__min-price" name="min-price" type="number" value="0"></label>
+        <label class="range__label">to<input class="range__max-price" name="max-price" type="number" value="100000"></label>
+      </div>
+    </fieldset>
 
-    <div class="filter__controls">
-      <label class="filter__range-label">
-        From
-        <input class="filter__min-price" name="min-price" type="number" value="0">
-      </label>
-      <label class="filter__range-label">
-        to
-        <input class="filter__max-price" name="max-price" type="number" value="100000">
-      </label>
-    </div>
-  </fieldset>
-
-  <button class="btn  btn--modifier  btn--filter" type="submit"></button>
-</form>
+    <button class="btn  btn--modifier  btn--filter" type="submit"></button>
+  </form>
+</div>
 
 
 
 
 
-<!--                                                           -->
-<!-- Custom checkbox which looks like a switcher: (o ) -> ( o) -->
-<!--                                                           -->
+<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - Custom checkbox which looks like a switcher: (o ) -> ( o) - - - - - - - -  -->
+<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <label class="label">
   <input class="checkbox" name="" type="checkbox">

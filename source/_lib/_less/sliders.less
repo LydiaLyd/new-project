@@ -1,6 +1,6 @@
-//////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // css slider #1 (z-index)
-//////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 .slider {
   position: relative;
@@ -11,43 +11,35 @@
 
   &__controls {
     position: absolute;
-    bottom: 10%;
+    // bottom: ;
     left: 50%;
-    z-index: 2;
-    width: 200px; // magic number
-    margin-left: -100px; // magic number
-    font-size: 0;
-    text-align: center;
+    z-index: @zi_slider-controls;
+    // width: ;
+    // margin-left: ;
   }
 
   &__control {
-    display: inline-block;
-    vertical-align: top;
-    .square(20px);
-    background-color: #000;
+    // width: ;
+    // height: ;
+    // background-color: ;
     border-radius: 50%;
     cursor: pointer;
-    opacity: .5;
-
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
   }
 
   &__radio-btn[id="toggle-1"]:checked ~ &__controls &__control[for="toggle-1"],
   &__radio-btn[id="toggle-2"]:checked ~ &__controls &__control[for="toggle-2"],
   &__radio-btn[id="toggle-3"]:checked ~ &__controls &__control[for="toggle-3"] {
-    opacity: 1;
+
   }
 
   &__slides {
     position: relative;
-    height: 500px;
+    // height: ;
   }
 
   &__slide {
     position: absolute;
-    z-index: -1;
+    z-index: @zi_slide--hidden;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -57,7 +49,7 @@
   &__radio-btn[id="toggle-1"]:checked ~ &__slides &__slide:nth-child(1),
   &__radio-btn[id="toggle-2"]:checked ~ &__slides &__slide:nth-child(2),
   &__radio-btn[id="toggle-3"]:checked ~ &__slides &__slide:nth-child(3) {
-    z-index: 1;
+    z-index: @zi_slide--show;
     opacity: 1;
   }
 
@@ -72,9 +64,9 @@
 
 
 
-////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 // css slider #2 (translateX)
-////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 .slider {
   position: relative;
@@ -85,33 +77,25 @@
 
   &__controls {
     position: absolute;
-    bottom: 10%;
+    // bottom: ;
     left: 50%;
-    z-index: 2;
-    width: 200px; // magic number
-    margin-left: -100px; // magic number
-    font-size: 0;
-    text-align: center;
+    z-index: @zi_slider-controls;
+    // width: ;
+    // margin-left: ;
   }
 
   &__control {
-    display: inline-block;
-    vertical-align: top;
-    .square(20px);
-    background-color: #000;
+    // width: ;
+    // height: ;
+    // background-color: ;
     border-radius: 50%;
     cursor: pointer;
-    opacity: .5;
-
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
   }
 
   &__radio-btn[id="toggle-1"]:checked ~ &__controls &__control[for="toggle-1"],
   &__radio-btn[id="toggle-2"]:checked ~ &__controls &__control[for="toggle-2"],
   &__radio-btn[id="toggle-3"]:checked ~ &__controls &__control[for="toggle-3"] {
-    opacity: 1;
+
   }
 
   &__slides-wrap {
@@ -123,7 +107,6 @@
   &__slides {
     width: 300%;
     transition: transform .25s;
-
     .clearfix;
   }
 
@@ -146,73 +129,6 @@
 
   &__link {
     display: block;
-  }
-
-  &__image {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-}
-
-
-
-
-
-//////////////////////
-// js slider (z-index)
-//////////////////////
-
-.slider {
-  position: relative;
-
-  &__controls-wrap {
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    z-index: 2;
-    margin-left: 0; // magic number
-  }
-
-  &__controls {
-    margin-left: -5px;
-    margin-right: -5px;
-
-    .clearfix
-  }
-
-  &__control {
-    float: left;
-    .square(20px);
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: #000;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: .5;
-
-    &--checked:before {
-      opacity: 1;
-    }
-  }
-
-  &__slides {
-    position: relative;
-    height: 500px;
-  }
-
-  &__slide {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity .25s;
-
-    &--show {
-      z-index: 1;
-      opacity: 1;
-    }
   }
 
   &__image {

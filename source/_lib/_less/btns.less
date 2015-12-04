@@ -1,63 +1,26 @@
 .btn {
-  // common styles
-
   display: inline-block;
-  padding: 15px 30px;
+  vertical-align: baseline;
+  // padding: ;
 
-  font-size: @btn-font-size-base;
-  line-height: @btn-line-hight-base;
+  // font-size: ;
+  // line-height: ;
   text-decoration: none;
   text-align: center;
 
-  color: @btn-color-default;
-  background-color: @btn-bg-default;
+  // color: ;
+  // background-color: ;
   border: none;
   outline: none;
-  border-radius: @btn-border-radius-base;
+  // border-radius: ;
 
   transition:
-    color .15s,
-    border-color .15s,
+    // color .15s,
     background-color .15s,
+    border-color .15s,
     box-shadow .15s;
-
-  // various btn types go here
 
   &--modifier {
 
   }
 }
-
-
-
-
-
-////////////////////////////////////////////////////////////////////
-// btn--arrow
-// not ideal: line-height should % 2 == 0,
-// otherwise there will be different heights of the btn and triangle
-////////////////////////////////////////////////////////////////////
-
-  @btn-line-hight-arrow: 1.96em;
-
-  // use line-height instead padding-top/bottom
-  &--arrow {
-    position: relative;
-    margin-right: 1em;
-    padding: 0 .5em 0 1em;
-
-    line-height: @btn-line-hight-arrow;
-
-    border-top-left-radius: 1em;
-    border-bottom-left-radius: 1em;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 100%;
-      // TO DO: improve if this is possible
-      border-width: @btn-line-hight-arrow/2 0 @btn-line-hight-arrow/2 1em;
-      border-style: solid;
-      border-color: transparent transparent transparent @btn-bg-default;
-    }
-  }
