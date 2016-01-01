@@ -59,7 +59,6 @@
 // Underlines
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 .underline(full-width, @height, @bg) {
   position: relative;
 
@@ -134,13 +133,12 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// a short descr goes here
+// Diagonal background
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Диагональный фон. Вариант 1 (подойдет, если фон должен быть скошен только верху).
-.bg-diagonal(@padding-top, @first-color, @second-color, @diagonal-height) {
-  padding-top: @padding-top;
+// Фон, скошенный сверху.
+.bg-diagonal(@first-color, @second-color, @diagonal-height) {
   background:
     @second-color
     linear-gradient(
@@ -155,88 +153,55 @@
 }
 
 
-// Диагональный фон. Вариант 2 (подойдет, если фон должен быть скошен cверху и снизу).
-.bg-gradient(@padding-top, @padding-bottom, @first-color, @second-color, @diagonal-height) {
-  position: relative;
-  padding-top: @padding-top;
-  padding-bottom: @padding-bottom;
-
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: @diagonal-height;
-  }
-
-  &::before {
-    top: 0;
-    background:
-      @second-color
-      linear-gradient(
-        to right bottom,
-        @first-color 0%,
-        @first-color 50%,
-        @second-color 50%,
-        @second-color 100%)
-      top
-      no-repeat;
-  }
-
-  &::after{
-    bottom: 0;
-    background:
-      @second-color
-      linear-gradient(
-        to right bottom,
-        @second-color 0%,
-        @second-color 50%,
-        @first-color 50%,
-        @first-color 100%)
-      top
-      no-repeat;
-  }
+// Фон, скошенный сверху и снизу.
+.bg-diagonal(@first-color, @second-color, @diagonal-height) {
+  background:
+    linear-gradient(
+      to right bottom,
+      @first-color 0%,
+      @first-color 50%,
+      @second-color 50%,
+      @second-color 100%)
+    top
+    no-repeat,
+    @second-color
+    linear-gradient(
+      to right bottom,
+      @second-color 0%,
+      @second-color 50%,
+      @first-color 50%,
+      @first-color 100%)
+    bottom
+    no-repeat;
+  background-size:
+    100% @diagonal-height,
+    100% @diagonal-height;
 }
 
 
-// Маска внизу блока в виде перевернутого треугольника
-.bg-triangle(@padding-bottom, @zi-triangle, @triangle-height, @first-color, @second-color) {
-  position: relative;
-  padding-bottom: @padding-bottom;
-
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    z-index: @zi-triangle;
-    width: 50%;
-    height: @triangle-height;
-  }
-
-  &::before {
-    left: 0;
-    background:
-      transparent
-      linear-gradient(
-        to top right,
-        @first-color 0%,
-        @first-color 50%,
-        @second-color 50%,
-        @second-color 100%)
-        no-repeat;
-  }
-
-  &::after {
-    right: 0;
-    background:
-      transparent
-      linear-gradient(
-        to bottom right,
-        @second-color 0%,
-        @second-color 50%,
-        @first-color 50%,
-        @first-color 100%)
-        no-repeat;
-  }
+// Фон в виде перевернутого треугольника
+.bg-triangle(@first-color, @second-color, @triangle-height) {
+  background:
+    linear-gradient(
+      to right top,
+      @first-color 0%,
+      @first-color 50%,
+      @second-color 50%,
+      @second-color 100%)
+    bottom left
+    no-repeat,
+    @second-color
+    linear-gradient(
+      to right bottom,
+      @second-color 0%,
+      @second-color 50%,
+      @first-color 50%,
+      @first-color 100%)
+    bottom right
+    no-repeat;
+  background-size:
+    50% @triangle-height,
+    50% @triangle-height;
 }
 
 
@@ -254,6 +219,5 @@
     width: 100px;
     background-color: @bg;
     transform: rotate(-45deg);
-    transform-origin: center;
   }
 }

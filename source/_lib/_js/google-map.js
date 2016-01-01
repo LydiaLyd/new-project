@@ -3,16 +3,18 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 (function() {
-  if (document.querySelector('.map')) {
+  if (document.querySelector(".map")) {
     function initialize() {
       var mapOptions = {
         // customize zoom
         zoom: n,
         // customize coordinates
         center: new google.maps.LatLng(x,y),
-        disableDefaultUI: true
+        disableDefaultUI: true,
+        // disable scrollwheel
+        scrollwheel: false
       }
-      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
       // customize image
       var image = "image.source";
       // customize coordinates
@@ -25,6 +27,6 @@
       });
     }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, "load", initialize);
   }
 })();
