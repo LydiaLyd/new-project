@@ -1,10 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Most usefull
+// Just stuff
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-.center() {
+.center(x) {
   margin-left: auto;
   margin-right: auto;
+}
+
+.center(xy) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
 .clearfix() {
@@ -12,6 +21,27 @@
     content: "";
     display: table;
     clear: both;
+  }
+}
+
+// Тень, которая не должна (вроде) тормозить на телефонах
+.smooth-shadow(@initial-shadow, @final-shadow, @duration: .15s) {
+  box-shadow: @initial-shadow;
+
+  &::after {
+    content: "";
+    // не забыть прописать pos:r родителю
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: @final-shadow;
+    opacity: 0;
+    transition: opacity @duration ease-in-out;
+  }
+
+  &:hover::after {
+    opacity: 1;
   }
 }
 
@@ -127,6 +157,41 @@
     border-color: transparent transparent @bg transparent;
   }
 }
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Triangles
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+.triangle(@_, @size, @color) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.triangle(top, @size, @color) {
+  border-width: 0 @size @size @size;
+  border-color: transparent transparent @color transparent;
+}
+
+.triangle(right, @size, @color) {
+  border-width: @size 0 @size @size;
+  border-color: transparent transparent transparent @color;
+}
+
+.triangle(bottom, @size, @color) {
+  border-width: @size @size 0 @size;
+  border-color: @color transparent transparent transparent;
+}
+
+.triangle(left, @size, @color) {
+  border-width: @size @size @size 0;
+  border-color: transparent @color transparent transparent;
+}
+
 
 
 

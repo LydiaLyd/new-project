@@ -1,7 +1,7 @@
 (function() {
   if (!("FormData" in window)) {
-    return
-  };
+    return;
+  }
 
   var form = document.querySelector(".form");
 
@@ -28,5 +28,5 @@
     });
 
     xhr.send(data);
-  };
+  }
 })();

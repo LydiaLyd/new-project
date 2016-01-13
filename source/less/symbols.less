@@ -1,16 +1,14 @@
 @font-face {
-  font-family: "@icon-font_name";
+  font-family: "@{icon-font_name}";
   font-weight: normal;
   font-style: normal;
-  src:
-    url("@{icon-font_path}/@icon-font_name.woff") format("woff"),
-    url("@{icon-font_path}/@icon-font_name.svg#@icon-font_name") format("svg");
+  src: url("@{icon-font_path}@{icon-font_name}.woff") format("woff");
 }
 
 [class^="icon--"]::before {
   display: inline-block;
   vertical-align: top;
-  font-family: @icon-font_name;
+  font-family: "@{icon-font_name}";
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -20,6 +18,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-// [class*="icon--facebook"]::before { content: "\e800"; }
-// [class*="icon--twitter"]::before { content: "\e801"; }
-// [class*="icon--right"]::before { content: "\e802"; }
+// .icon--facebook::before { content: "\e800"; }
+// .icon--twitter::before { content: "\e801"; }
+// .icon--right::before { content: "\e802"; }
