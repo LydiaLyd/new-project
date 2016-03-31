@@ -1,1 +1,1 @@
-# My horrible template.
+# My awful template for new projects

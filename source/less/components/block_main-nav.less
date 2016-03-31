@@ -1,27 +1,30 @@
 .main-nav {
+
   &__list {
     .ul-reset;
   }
 
   &__item {
-    &--current {
 
-    }
+  }
+  &__item--current {
+
   }
 
   &__link {
-    display: block;
+    display: inline-block;
+    vertical-align: top;
     transition:
       color .15s,
       background-color .15s;
-
-    &:hover {
-
-    }
-    &:active {
-      
-    }
   }
+  &__link:hover {
+
+  }
+  &__link:active {
+    
+  }
+
 
   &__text-hidden {
     display: none;

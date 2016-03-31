@@ -2,20 +2,20 @@
 
 var gulp = require("gulp"),
     less = require("gulp-less"),
-    postcss = require("gulp-postcss"),
-    autoprefixer = require("autoprefixer"),
+    autoprefixer = require("gulp-autoprefixer"),
     combineMq = require("gulp-combine-mq"),
     csscomb = require("gulp-csscomb"),
     csso = require("gulp-csso"),
     concat = require("gulp-concat"),
     uglify = require("gulp-uglify"),
     htmlmin = require("gulp-htmlmin"),
+    fileInclude = require("gulp-file-include"),
     imagemin = require("gulp-imagemin"),
     plumber = require("gulp-plumber"),
     rename = require("gulp-rename"),
     livereload = require("gulp-livereload"),
-    clean = require("gulp-clean"),
-    runSequence = require("run-sequence");
+    del = require("del"),
+    gulpSequence = require("gulp-sequence");
 
 /**
  * Плагин htmlmin добавляет закрывающие теги </source>.
@@ -25,6 +25,7 @@ var gulp = require("gulp"),
 gulp.task("html", function() {
   return gulp.src(["source/*.html", "!source/_components-lib.html"])
     // .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(fileInclude())
     .pipe(gulp.dest("build"))
     .pipe(livereload());
 });
@@ -33,29 +34,14 @@ gulp.task("style", function() {
   return gulp.src("source/less/style.less")
     .pipe(plumber())
     .pipe(less())
-    .pipe(postcss([
-      autoprefixer({browsers: ["last 2 versions", "ie 10"]})
-    ]))
-    .pipe(combineMq({
-        beautify: true
-    }))
+    .pipe(autoprefixer({browsers: ["last 2 versions", "ie 10"]}))
+    .pipe(combineMq({beautify: true}))
     .pipe(csscomb())
     .pipe(gulp.dest("build/css"))
     .pipe(csso())
-    .pipe(rename({
-        suffix: ".min"
-    }))
+    .pipe(rename({suffix: ".min"}))
     .pipe(gulp.dest("build/css"))
     .pipe(livereload());
-});
-
-gulp.task("vendor-css", function() {
-  return gulp.src("source/css/*.css")
-    .pipe(csso())
-    .pipe(rename({
-        suffix: ".min"
-    }))
-    .pipe(gulp.dest("build/css"));
 });
 
 gulp.task("script", function() {
@@ -65,16 +51,18 @@ gulp.task("script", function() {
     .pipe(rename("script.js"))
     .pipe(gulp.dest("build/js"))
     .pipe(uglify())
-    .pipe(rename({
-      suffix: ".min"
-    }))
+    .pipe(rename({suffix: ".min"}))
     .pipe(gulp.dest("build/js"))
     .pipe(livereload());
 });
 
-gulp.task("vendors", function() {
-  return gulp.src("source/js/vendors/*")
-    .pipe(gulp.dest("build/js/vendors"));
+gulp.task("vendor", function() {
+  return gulp.src("source/js/vendor/*.js")
+    .pipe(plumber())
+    .pipe(concat("all.js"))
+    .pipe(uglify())
+    .pipe(rename("vendor.min.js"))
+    .pipe(gulp.dest("build/js"));
 });
 
 gulp.task("fonts", function() {
@@ -83,29 +71,26 @@ gulp.task("fonts", function() {
 });
 
 gulp.task("images", function() {
-  return gulp.src("source/img/*.{png,jpg,gif,svg}")
+  return gulp.src("source/img/*.{png,jpg,gif,svg,ico}")
     .pipe(imagemin())
     .pipe(gulp.dest("build/img"));
 });
 
 gulp.task("clean", function() {
-  return gulp.src("build")
-    .pipe(clean());
+  return del(["build"]);
 });
 
 gulp.task("build", function(callback) {
-  runSequence("clean",
-              ["html", "style", "vendor-css", "script", "vendors", "fonts", "images"],
-              callback);
+  gulpSequence("clean", ["html", "style", "script", "vendor", "fonts", "images"], callback);
 });
 
 gulp.task("watch", ["html", "style", "script"], function() {
   livereload.listen();
   gulp.watch("source/*.html", ["html"]);
   gulp.watch("source/less/**/*.less", ["style"]);
-  gulp.watch("source/js/**/*.js", ["script", "vendors"]);
+  gulp.watch("source/js/**/*.js", ["script", "vendor"]);
 });
 
 gulp.task("default", function(callback) {
-  runSequence("build", "watch", callback);
+  gulpSequence(["html", "style", "script", "vendor", "fonts"/*, "images"*/], "watch", callback);
 });

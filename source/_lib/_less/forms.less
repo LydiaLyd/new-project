@@ -1,10 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////  Most usefull  /////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////
+// Most usefull
+////////////////////////////////////////////////////////////////////////////////
 
 // Removing arrows from input:number
-
 [type="number"] {
   -moz-appearance: textfield;
 
@@ -17,7 +15,6 @@
 
 
 // Changing placeholder color (не группировать! а то не сработает)
-
 [type="search"]::-moz-placeholder { color: #ffd595; } // not working
 [type="search"]::-webkit-input-placeholder { color: #ffd595; }
 [type="search"]:-ms-input-placeholder { color: #ffd595; }
@@ -28,9 +25,9 @@
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////  Snippets  //////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Snippets
+////////////////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////
@@ -49,21 +46,18 @@ input:enabled + label {
   cursor: pointer;
 
   // pseudo checkbox
-
   &::before {
     content: "";
     position: absolute;
     left: 0;
     font-family: @icon-font_name;
     transition: color .15s;
-
-    input:enabled:checked + & {
-      content: "";
-    }
-
-    input:disabled + & {
-      opacity: .3;
-    }
+  }
+  input:enabled:checked + &::before {
+    content: "";
+  }
+  input:disabled + &::before {
+    opacity: .3;
   }
 }
 
@@ -93,7 +87,6 @@ input:enabled + label {
   padding-left: 3em;
 
   // pseudo checkbox
-
   &::before,
   &::after {
     content: "";
@@ -103,14 +96,12 @@ input:enabled + label {
     height: 1em;
     margin-top: -.5em;
   }
-
   // ( )
   &::before {
     width: 2em;
     background: #ddd;
     border-radius: .5em;
   }
-
   // o
   &::after {
     width: 1em;
@@ -147,38 +138,28 @@ input:enabled + label {
 
   &__scale {
     height: 2px;
-    // background-color: ;
   }
 
   &__bar {
     height: inherit;
-    // background-color: ;
   }
 
   &__toggle {
     position: absolute;
     top: 50%;
-    // width: ;
-    // height: ;
-    // margin-top: ;
-    // background-color: ;
-    // border: ;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color .15s;
+  }
+  &__toggle--min {
+    left: 0;
+  }
+  &__toggle--max {
+    left: 50%;
+  }
+  &__toggle:hover,
+  &__toggle:active {
 
-    &--min {
-      left: 0;
-    }
-
-    &--max {
-      left: 50%;
-    }
-
-    &:hover,
-    &:active {
-      // background-color: ;
-    }
   }
 
   &__controls {

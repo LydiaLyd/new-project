@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// Just stuff
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Unsorted
+////////////////////////////////////////////////////////////////////////////////
 
 .center(x) {
   margin-left: auto;
@@ -24,13 +24,15 @@
   }
 }
 
-// Тень, которая не должна (вроде) тормозить на телефонах
-.smooth-shadow(@initial-shadow, @final-shadow, @duration: .15s) {
+/**
+ * Тень, у которой анимация не должна тормозить на телефонах.
+ * Родителю задать position: relative.
+ */
+.smooth-shadow(@initial-shadow: 0 0 10px #333; @final-shadow: 0 0 20px #333; @duration: 1s) {
   box-shadow: @initial-shadow;
 
   &::after {
     content: "";
-    // не забыть прописать pos:r родителю
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -45,13 +47,21 @@
   }
 }
 
+.cover() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
 // Reset
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 .ul-reset() {
   margin-top: 0;
@@ -85,76 +95,144 @@
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // Underlines
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-.underline(full-width, @height, @bg) {
-  position: relative;
-
-  &::after {
+.underline(full-width; @height: 2px; @background-color: #222) {
+  &::before {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: @height;
-    background-color: @bg;
+    background-color: @background-color;
   }
 }
 
-
-.underline(center, @gutter, @height, @bg) {
-  position: relative;
-
-  &::after {
+.underline(centered; @gutter: 10px; @height: 2px; @background-color: #222) {
+  &::before {
     content: "";
     position: absolute;
     bottom: 0;
     left: @gutter;
     right: @gutter;
     height: @height;
-    background-color: @bg;
+    background-color: @background-color;
   }
 }
 
-
-.underline(left, @width, @height, @bg) {
-  position: relative;
-
-  &::after {
+.underline(left; @width: 200px; @height: 2px; @background-color: #222) {
+  &::before {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: @width;
     height: @height;
-    background-color: @bg;
+    background-color: @background-color;
   }
 }
 
-
-// A strip and a triangle in the center
-.underline(with-triangle, @gutter, @strip-height, @triangle-size, @bg) {
+.underline(triangle; @gutter: 10px; @line-height: 4px; @triangle-size: 10px; @background-color: #222) {
   &::before, &::after {
     content: "";
     position: absolute;
     bottom: 0;
   }
-
   &::before {
     left: @gutter;
     right: @gutter;
-    height: @strip-height;
-    background-color: @bg;
+    height: @line-height;
+    background-color: @background-color;
   }
-
   &::after {
     left: 50%;
     margin-left: -@triangle-size;
     border-width: 0 @triangle-size @triangle-size @triangle-size;
     border-style: solid;
-    border-color: transparent transparent @bg transparent;
+    border-color: transparent transparent @background-color transparent;
+  }
+}
+
+.underline(gradient; @height: 2px; @background-color: #222) {
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: @height;
+    background-image: linear-gradient(90deg, transparent, @background-color, transparent);
+  }
+}
+
+.underline(rhombs; @line-width: 200px; @line-height: 2px; @line-color: #222; @rhomb-size: 20px; @rhomb-color: #222) {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+  }
+  &::before {
+    bottom: @rhomb-size/2;
+    left: 50%;
+    width: @line-width;
+    height: @line-height;
+    margin-left: -@line-width/2;
+    background-image: linear-gradient(90deg, transparent, @line-color, transparent);
+  }
+  &::after {
+    bottom: 0;
+    left: 50%;
+    width: @rhomb-size;
+    height: @rhomb-size;
+    margin-top: -(@rhomb-size - @line-height)/2;
+    background-color: @rhomb-color;
+    box-shadow:
+      -(@rhomb-size * 3 - (@rhomb-size * 1.5)) (@rhomb-size * 3 - (@rhomb-size * 1.5)) 0 -3px fade(@rhomb-color, 70%),
+      -(@rhomb-size * 2 - @rhomb-size) (@rhomb-size * 2 - @rhomb-size) 0 -2px fade(@rhomb-color, 80%),
+      -(@rhomb-size - (@rhomb-size / 2)) (@rhomb-size - (@rhomb-size / 2)) 0 -1px fade(@rhomb-color, 90%),
+      (@rhomb-size - (@rhomb-size / 2)) -(@rhomb-size - (@rhomb-size / 2)) 0 -1px fade(@rhomb-color, 90%),
+      (@rhomb-size * 2 - @rhomb-size) -(@rhomb-size * 2 - @rhomb-size) 0 -2px fade(@rhomb-color, 80%),
+      (@rhomb-size * 3 - (@rhomb-size * 1.5)) -(@rhomb-size * 3 - (@rhomb-size * 1.5)) 0 -3px fade(@rhomb-color, 70%);
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+.underline(parallelograms; @size: 20px; @background-color: #222) {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: @size;
+    height: @size;
+    margin-left: -@size/2;
+    background-color: @background-color;
+    box-shadow:
+      -(@size*7 - 28) 0 0 -7px fade(@background-color, 30%),
+      -(@size*6 - 18) 0 0 -6px fade(@background-color, 40%),
+      -(@size*5 - 10) 0 0 -5px fade(@background-color, 50%),
+      -(@size*4 - 4) 0 0 -4px fade(@background-color, 60%),
+      -(@size*3) 0 0 -3px fade(@background-color, 70%),
+      -(@size*2 + 2) 0 0 -2px fade(@background-color, 80%),
+      -(@size + 2) 0 0 -1px fade(@background-color, 90%),
+      (@size + 2) 0 0 -1px fade(@background-color, 90%),
+      (@size*2 + 2) 0 0 -2px fade(@background-color, 80%),
+      (@size*3) 0 0 -3px fade(@background-color, 70%),
+      (@size*4 - 4) 0 0 -4px fade(@background-color, 60%),
+      (@size*5 - 10) 0 0 -5px fade(@background-color, 50%),
+      (@size*6 - 18) 0 0 -6px fade(@background-color, 40%),
+      (@size*7 - 28) 0 0 -7px fade(@background-color, 30%);
+  }
+  &::before {
+    top: 0;
+    transform: rotate(45deg) skewY(-45deg);
+  }
+  &::after {
+    bottom: 0;
+    transform: rotate(45deg) skewY(-45deg);
   }
 }
 
@@ -162,9 +240,9 @@
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // Triangles
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 .triangle(@_, @size, @color) {
   width: 0;
@@ -196,16 +274,13 @@
 
 
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // Diagonal background
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////
 
 // Фон, скошенный сверху.
 .bg-diagonal(@first-color, @second-color, @diagonal-height) {
   background:
-    @second-color
     linear-gradient(
       to right bottom,
       @first-color 0%,
@@ -229,7 +304,6 @@
       @second-color 100%)
     top
     no-repeat,
-    @second-color
     linear-gradient(
       to right bottom,
       @second-color 0%,
@@ -255,7 +329,6 @@
       @second-color 100%)
     bottom left
     no-repeat,
-    @second-color
     linear-gradient(
       to right bottom,
       @second-color 0%,
@@ -270,19 +343,19 @@
 }
 
 
-// Ярлык, повернутый на -45deg
-.has-tag(@content, @top, @left, @zi-tag, @bg) {
-  position: relative;
-  overflow: hidden;
-
+/**
+ * Ярлык, повернутый на -45deg
+ * Родителю задать position: relative и overflow: hidden
+ */
+.has-tag(@content, @top, @left, @z-index, @background-color) {
   &::before {
     content: "@{content}";
     position: absolute;
     top: @top;
     left: @left;
-    z-index: @zi-tag;
+    z-index: @z-index;
     width: 100px;
-    background-color: @bg;
+    background-color: @background-color;
     transform: rotate(-45deg);
   }
 }

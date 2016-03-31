@@ -1,17 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// Responsive table based on display:block and data attributes
-// taken from here: http://codepen.io/geoffyuen/pen/FCBEg
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Responsive table based on display:block and data attributes.
+// Source: http://codepen.io/geoffyuen/pen/FCBEg
+////////////////////////////////////////////////////////////////////////////////
 
 .table {
   border-collapse: collapse;
 
   &__row {
     border-top: 1px solid #ddd;
-
-    &:last-child {
-      border-bottom: 1px solid #ddd;
-    }
+  }
+  &__row:last-child {
+    border-bottom: 1px solid #ddd;
   }
 
   &__heading,
@@ -21,46 +20,46 @@
 
   &__heading {
     display: none;
-
-    @media(min-width: 480px) {
-      display: table-cell;
-    }
   }
 
   &__cell {
     display: block;
+  }
+  &__cell:first-child {
+    padding-top: 1em;
+  }
+  &__cell:last-child {
+    padding-bottom: 1em;
+  }
+  &__cell::before {
+    content: attr(data-th)": ";
+    display: inline-block;
+    vertical-align: baseline;
+    // magic number
+    width: 7em;
+    font-weight: 700;
+  }
+}
 
-    @media(min-width: 480px) {
+@media(min-width: 480px) {
+  .table {
+
+    &__heading {
+      display: table-cell;
+    }
+
+    &__cell {
       display: table-cell;
       text-align: center;
     }
-
-    &:first-child {
-      padding-top: 1em;
-
-      @media(min-width: 480px) {
-        padding-top: .5em;
-      }
+    &__cell:first-child {
+      padding-top: .5em;
     }
-
-    &:last-child {
-      padding-bottom: 1em;
-
-      @media(min-width: 480px) {
-        padding-bottom: .5em;
-      }
+    &__cell:last-child {
+      padding-bottom: .5em;
     }
-
-    &::before {
-      content: attr(data-th)": ";
-      display: inline-block;
-      vertical-align: baseline;
-      width: 7em; // magic number
-      font-weight: 700;
-
-      @media(min-width: 480px) {
-        display: none;
-      }
+    &__cell::before {
+      display: none;
     }
   }
 }
