@@ -2,19 +2,18 @@
 // Most usefull
 ////////////////////////////////////////////////////////////////////////////////
 
-// Removing arrows from input:number
+// Remove arrows from input:number
 [type="number"] {
   -moz-appearance: textfield;
-
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-  }
+}
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
 
 
-// Changing placeholder color (не группировать! а то не сработает)
+// Change placeholder color (не группировать! а то не сработает)
 [type="search"]::-moz-placeholder { color: #ffd595; } // not working
 [type="search"]::-webkit-input-placeholder { color: #ffd595; }
 [type="search"]:-ms-input-placeholder { color: #ffd595; }
@@ -44,23 +43,22 @@ input:enabled + label {
   display: block;
   padding-left: 40px;
   cursor: pointer;
-
-  // pseudo checkbox
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    font-family: @icon-font_name;
-    transition: color .15s;
-  }
-  input:enabled:checked + &::before {
-    content: "";
-  }
-  input:disabled + &::before {
-    opacity: .3;
-  }
 }
 
+// pseudo checkbox
+input:enabled + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  font-family: @icon-font_name;
+  transition: color .15s;
+}
+input:enabled:checked + label::before {
+  content: "";
+}
+input:disabled + label::before {
+  opacity: .3;
+}
 
 
 

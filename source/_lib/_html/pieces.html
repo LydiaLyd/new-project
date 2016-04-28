@@ -2,29 +2,52 @@
 <!-- - - - - - - - - - - - - - - Most useful - - - - - - - - - - - - - - -  -->
 <!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -->
 
+<!-- Head -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=768">
+
+<meta name="description" content="description">
+<meta name="keywords" content="keyword-1, keyword-2, ...">
+
+<!-- Вставляется на английскую версию страницы -->
+<link rel="alternate" hreflang="en" href="en/">
+<!-- Вставляется на русскую версию страницы -->
+<link rel="alternate" hreflang="ru" href="../">
+
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+
+
+<!-- Buttons -->
 
 <a class="btn  btn--modifier" href="#"></a>
-<button class="btn  btn--modifier" type="submit"></button>
+<button class="btn  btn--modifier" type="button"></button>
 
-<a class="sect__link" href="#"></a>
+
+
+<!-- Images -->
 
 <img class="sect__img" src="img/" width="" height="" alt="">
 
-<time datetime="2015-09-29"></time>
-
-
-
 <picture>
   <source media="(min-width: 700px)" srcset="img/im--sm@1x.jpg 1x, img/im--sm@2x.jpg 2x">
-  <img class="" src="img/img--xs@1x.jpg" srcset="img/img--xs@2x.jpg 2x" width="" height="" alt="Image">
+  <img class="sect__img" src="img/img--xs@1x.jpg" srcset="img/img--xs@2x.jpg 2x" width="" height="" alt="">
 </picture>
 
 
 
-<div class="popup">
-  <!-- Дополнительная обертка, чтобы родитель мог играть роль оверлея -->
-  <div class="popup__inner"></div>
-</div>
+<!-- Form -->
+
+<input class="sect__upload" name="upload" type="file" multiple accept="image/*">
+<label for="ulpoad"></label>
+
+
+
+<!-- Other -->
+
+<a class="sect__link" href="#"></a>
+<time datetime="2015-09-29"></time>
 
 
 
@@ -67,108 +90,3 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
-
-
-
-<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -->
-<!-- - - - - - - - - - - - - - -  My snippets - - - - - - - - - - - - - - - -->
-<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -->
-
-<div class="rating">
-  <div class="rating__stars">
-    <i class="icon  icon--star"></i>
-    <i class="icon  icon--star"></i>
-    <span class="rating__text-hidden">2 звезды</span>
-  </div>
-  <div class="rating__count">Рейтинг: <span class="rating__value">8,5</span></div>
-</div>
-
-
-
-<div class="sorting">
-  <div class="sorting__found">Найдено: <span class="sorting__amount">3</span></div>
-
-  <div class="sorting__types">
-    <div class="sorting__heading">Сортировка:</div>
-    <ul class="sorting__list">
-      <li class="sorting__item">
-        <a class="sorting__link  sorting__link--active" href="#">По цене</a>
-      </li>
-      <li class="sorting__item">
-        <a class="sorting__link" href="#">По типу</a>
-      </li>
-      <li class="sorting__item">
-        <a class="sorting__link" href="#">По рейтингу</a>
-      </li>
-    </ul>
-
-    <ul class="sorting-arrows">
-      <li class="sorting-arrows__item">
-        <a class="sorting-arrows__link  sorting-arrows__link--up" href="#" title="Сортировать по возрастанию"><i class="icon  icon--up-dir"></i><span class="sorting__еуче-ршввут">По возрастанию</span></a>
-      </li>
-      <li class="sorting-arrows__item">
-        <a class="sorting-arrows__link  sorting-arrows__link--down  sorting-arrows__link--active" href="#" title="Сортировать по убыванию"><i class="icon  icon--down-dir"></i><span class="sorting__text-hidden">По убыванию</span></a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-
-<!-- Another variant of some block with an icon on the top -->
-<div>
-  <i class="icon"></i>
-  <h3></h3>
-  <p></p>
-</div>
-
-
-
-<div class="navbar">
-  <div class="navbar__header">
-    <div class="navbar__center">
-      <a class="logo" href="index.html" title="Вернуться на главную">
-        <img class="logo__img" src="img/logo_project.png" width="" height="" alt="Логотип">
-      </a>
-      <button class="navbar__toggle" type="button">
-        <span class="navbar__lines"></span>
-        <span class="navbar__text-hidden">Переключатель меню</span>
-      </button>
-    </div>
-  </div>
-
-  <div class="navbar__nav">
-    <a class="logo" href="index.html" title="Вернуться на главную">
-      <img class="logo__img" src="img/logo_project.png" width="" height="" alt="Логотип">
-    </a>
-    <nav class="main-nav">
-      <ul class="main-nav__list">
-        <li class="main-nav__item  main-nav__item--current">
-          <a class="main-nav__link" href="index.html">Ссылка 1</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="blog.html">Ссылка 2</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>
-
-
-
-
-
-<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -->
-<!-- - - - - - - - - - - - - - - -  Unsorted - - - - - - - - - - - - - - -  -->
-<!-- - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -->
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=768">
-
-<input class="sect__upload" id="upload" name="upload" type="file" multiple accept="image/*">
-<label for="ulpoad"></label>
-
-<link rel="alternate" hreflang="en" href="en/">
-<link rel="alternate" hreflang="ru" href="../">

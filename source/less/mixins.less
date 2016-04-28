@@ -24,11 +24,9 @@
   }
 }
 
-/**
- * Тень, у которой анимация не должна тормозить на телефонах.
- * Родителю задать position: relative.
- */
-.smooth-shadow(@initial-shadow: 0 0 10px #333; @final-shadow: 0 0 20px #333; @duration: 1s) {
+ // Тень, анимация которой не должна тормозить на телефонах.
+ // Родителю задать position: relative;
+.smooth-shadow(@initial-shadow: 0 0 10px #333; @final-shadow: 0 0 20px #333; @duration: .5s) {
   box-shadow: @initial-shadow;
 
   &::after {
@@ -53,6 +51,29 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+// Кастомный скроллбар (Chrome, Opera, Safari, IE, but not Edge)
+.scrollbar(@size: 5px; @foreground-color: #eee; @background-color: #fff; @border-radius: 0;) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width:  @size;
+    height: @size;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: @foreground-color;
+    border-radius: @border-radius;
+  }
+  ::-webkit-scrollbar-track {
+    background: @background-color;
+    border-radius: @border-radius;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: @foreground-color;
+    scrollbar-track-color: @background-color;
+  }
 }
 
 
@@ -99,6 +120,8 @@
 // Underlines
 ////////////////////////////////////////////////////////////////////////////////
 
+ // Родителю задать position: relative;
+
 .underline(full-width; @height: 2px; @background-color: #222) {
   &::before {
     content: "";
@@ -119,6 +142,19 @@
     left: @gutter;
     right: @gutter;
     height: @height;
+    background-color: @background-color;
+  }
+}
+
+.underline(short; @width: 60px; @height: 3px; @background-color: @pink) {
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: @width;
+    height: @height;
+    margin-left: -@width/2;
     background-color: @background-color;
   }
 }
@@ -279,7 +315,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Фон, скошенный сверху.
-.bg-diagonal(@first-color, @second-color, @diagonal-height) {
+.bg-diagonal(@first-color: transparent; @second-color: #eee; @diagonal-height: 100px) {
   background:
     linear-gradient(
       to right bottom,
@@ -294,23 +330,25 @@
 
 
 // Фон, скошенный сверху и снизу.
-.bg-diagonal(@first-color, @second-color, @diagonal-height) {
-  background:
+.bg-diagonal(@first-color: transparent; @second-color: #eee; @diagonal-height: 100px) {
+  background-image:
     linear-gradient(
       to right bottom,
       @first-color 0%,
       @first-color 50%,
       @second-color 50%,
-      @second-color 100%)
-    top
-    no-repeat,
+      @second-color 100%),
     linear-gradient(
       to right bottom,
       @second-color 0%,
       @second-color 50%,
       @first-color 50%,
-      @first-color 100%)
-    bottom
+      @first-color 100%);
+  background-position:
+    top,
+    bottom;
+  background-repeat:
+    no-repeat,
     no-repeat;
   background-size:
     100% @diagonal-height,
@@ -318,24 +356,26 @@
 }
 
 
-// Фон в виде перевернутого треугольника
-.bg-triangle(@first-color, @second-color, @triangle-height) {
-  background:
+// Фон в виде треугольника (вершиной вниз)
+.bg-triangle(@first-color: transparent; @second-color: #eee; @triangle-height: 100px) {
+  background-image:
     linear-gradient(
       to right top,
       @first-color 0%,
       @first-color 50%,
       @second-color 50%,
-      @second-color 100%)
-    bottom left
-    no-repeat,
+      @second-color 100%),
     linear-gradient(
       to right bottom,
       @second-color 0%,
       @second-color 50%,
       @first-color 50%,
-      @first-color 100%)
-    bottom right
+      @first-color 100%);
+  background-position:
+    bottom left,
+    bottom right;
+  background-repeat:
+    no-repeat,
     no-repeat;
   background-size:
     50% @triangle-height,
@@ -343,10 +383,15 @@
 }
 
 
-/**
- * Ярлык, повернутый на -45deg
- * Родителю задать position: relative и overflow: hidden
- */
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Other
+////////////////////////////////////////////////////////////////////////////////
+
+ // Ярлык, повернутый на -45deg
+ // Родителю задать position: relative; и overflow: hidden;
 .has-tag(@content, @top, @left, @z-index, @background-color) {
   &::before {
     content: "@{content}";
