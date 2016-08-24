@@ -23,3 +23,13 @@ if (!Element.prototype.closest) {
     return null;
   };
 }
+
+
+
+
+// Полифилл для str.trim()
+if (!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
+  };
+}

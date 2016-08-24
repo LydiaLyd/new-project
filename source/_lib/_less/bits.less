@@ -1,0 +1,37 @@
+// убираем стрелки у input:number
+[type="number"] { -moz-appearance: textfield; }
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+
+// задаем цвет placeholder'ам (группировать нельзя: не заработает)
+input::-webkit-input-placeholder { color: crimson; } /* Chrome/Opera/Safari */
+input::-moz-placeholder { color: crimson; } /* Firefox 19+ */
+input:-ms-input-placeholder { color: crimson; } /* IE 10+ */
+input::placeholder { color: crimson; }
+
+
+// задаем цвет выделения текста
+p::selection { background-color: rgba(0,0,0, .3); }
+
+
+// кастомизируем скроллбар
+// Chrome/Opera/Safari
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #eee;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+// IE but not Edge
+body {
+  scrollbar-face-color: #eee;
+  scrollbar-track-color: #fff;
+}

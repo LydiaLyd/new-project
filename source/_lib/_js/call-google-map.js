@@ -1,8 +1,7 @@
 /**
  * Google map
  *
- * html:
- * <div class="map" id="map"></div>
+ * html: .map#map
  * <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8CKWprvquDtLkwJSlppUgO9R4ndPa6iA"></script>
  */
 
@@ -18,7 +17,7 @@
      // координаты
      var coords = new google.maps.LatLng(-35.7642221, 150.1074482);
 
-     // ппараметры для карты
+     // параметры для карты
      var options = {
        center: coords,
        zoom: 10,

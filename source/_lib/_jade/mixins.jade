@@ -1,0 +1,63 @@
+//- items - array
+//- +nav([{text: "", href: "", current: true}, {text: "", href: ""}])
+mixin nav(items)
+  nav.nav
+    ul.nav-list
+      each item in items
+        if item.current
+          li.nav__item
+            a.nav__link.nav__link--current(href=item.href)= item.text
+              span.nav__text-hidden Current
+        else
+          li.nav__item
+            a.nav__link(href=item.href)= item.text
+
+//- for use in navbar
+//- items - array
+//- +nav-list([{text: "", href: "", current: true}, {text: "", href: ""}])
+mixin nav-list(items)
+  ul.nav
+    each item in items
+      if item.current
+        li.nav__item
+          a.nav__link.nav__link--current(href=item.href)= item.text
+            span.nav__text-hidden Current
+      else
+        li.nav__item
+          a.nav__link(href=item.href)= item.text
+
+
+//- modifier - string
+//- +icon("modifier")
+mixin icon(modifier)
+  i(class="icon icon--" + modifier)
+  
+  
+//- items - array, modifier - string
+//- +socials([{icon: "", href: "", hint: ""}, {icon: "", href: "", hint: ""}], "")
+mixin socials(items, modifier)
+  if modifier
+    ul(class="socials socials--" + modifier)
+      each item in items
+        li(class="socials__item socials__item--" + modifier)
+          a(class="socials__link socials__link--" + modifier href=item.href title=item.hint target="_blank")
+            +icon(item.icon)
+            span.socials__text-hidden= item.hint
+  else  
+    ul.socials
+      each item in items
+        li.socials__item
+          a.socials__link(href=item.href title=item.hint target="_blank")
+            +icon(item.icon)
+            span.socials__text-hidden= item.hint
+
+
+//- modifier - string
+//- +slider()>block
+mixin slider(modifier)
+  if modifier
+    div(class="slider slider--" + modifier)
+      block
+  else
+    div(class="slider")
+      block

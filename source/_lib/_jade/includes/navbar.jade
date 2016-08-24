@@ -1,0 +1,24 @@
+nav.navbar#navbar
+  .navbar__header
+    include logo.jade
+    button.navbar__toggle(type="button"): span.navbar__toggle-lines Toggle navigation
+  +nav-list([{
+    text: "Home",
+    href: "#intro",
+    current: true
+  }, {
+    text: "Features",
+    href: "#features"
+  }, {
+    text: "Testimonials",
+    href: "#testimonials"
+  }, {
+    text: "Blog",
+    href: "#blog-preview"
+  }, {
+    text: "Newsletter",
+    href: "#subscribe"
+  }, {
+    text: "Contact",
+    href: "#contact"
+  }])
